@@ -2,7 +2,7 @@
 NAME :=          mandroid
 PROJNAME :=      man-droid
 TARGET_FRMWRK := netcoreapp3.1
-SRC :=           $(wildcard src/*.cs)
+SRC :=           $(wildcard src/*.cs) $(wildcard src/*/*.cs)
 
 # Technically this is cross-platform, but we want it on the beaglebone :)
 RUNTIME :=       linux-arm

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Google.Cloud.Speech.V1;
 
-namespace man_droid {
+namespace mandroid {
     class Program {
         static void Main(string[] args) {
             if(args.Length < 1) {
