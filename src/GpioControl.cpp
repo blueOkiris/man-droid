@@ -40,6 +40,7 @@ void PwmPin::init() const {
         exportFileName << chipFolder << "/export";
         std::cout << pinFolder << std::endl;
         std::cout << exportFileName.str() << std::endl;
+        std::cout << pinId << std::endl;
         std::ofstream exportFile(exportFileName.str());
         exportFile << pinId << "\n";
         exportFile.close();
