@@ -29,6 +29,14 @@ PwmPin::PwmPin(
     }
 }
 
+void PwmPin::setDuty(const std::chrono::nanoseconds &duty) {
+    _duty = duty;
+}
+
+void PwmPin::setPeriod(const std::chrono::nanoseconds &period) {
+    _period = period;
+}
+
 void PwmPin::init() const {
     const auto pinFolder = _pwmPinFolder(_pin);
     const auto chipFolder = _pwmPinChipFolder(_pin);
@@ -36,10 +44,11 @@ void PwmPin::init() const {
 
     if(!directoryExists(pinFolder)) {
         // Ex: echo 0 > /sys/class/pwmchip1/export
-        std::stringstream exportCmd;
-        exportCmd << "echo " << pinId << " > " << chipFolder << "/export";
-        std::cout << exportCmd.str() << std::endl;
-        system(exportCmd.str().c_str());
+        std::stringstream exportFileName;
+        exportFileName << chipFolder << "/export";
+        std::ofstream exportFile(exportFileName.str());
+        exportFile << pinId << "\n";
+        exportFile.close();
     }
 
     // Ex: echo 1000000 > /sys/class/pwmchip1/pwm-1:0/period 
@@ -95,7 +104,7 @@ void PwmPin::deInit() const {
 std::string PwmPin::_pwmPinChipFolder(const PinName &pin) {
     switch(pin) {
         case PinName::Pwm_P9_22:
-            return "/sys/class/pwmchip1";
+            return "/sys/class/pwmchip1/pwm";
         
         default:
             return "";
@@ -105,7 +114,7 @@ std::string PwmPin::_pwmPinChipFolder(const PinName &pin) {
 std::string PwmPin::_pwmPinFolder(const PinName &pin) {
     switch(pin) {
         case PinName::Pwm_P9_22:
-            return "/sys/class/pwmchip1/pwm-1:0";
+            return "/sys/class/pwm/pwmchip1/pwm-1:0";
         
         default:
             return "";

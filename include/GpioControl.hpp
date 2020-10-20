@@ -19,7 +19,7 @@ namespace mandroid {
     class PwmPin : public GpioPin {
         private:
             const PinName _pin;
-            const std::chrono::nanoseconds _duty, _period;
+            std::chrono::nanoseconds _duty, _period;
 
             static std::string _pwmPinChipFolder(const PinName &pin);
             static std::string _pwmPinFolder(const PinName &pin);
@@ -31,6 +31,8 @@ namespace mandroid {
                 const std::chrono::nanoseconds &duty,
                 const std::chrono::nanoseconds &period
             );
+            void setDuty(const std::chrono::nanoseconds &duty);
+            void setPeriod(const std::chrono::nanoseconds &period);
 
             void init() const override;
             void on() const override;
