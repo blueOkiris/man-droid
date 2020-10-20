@@ -17,7 +17,7 @@ int main(int argc, char **args) {
     }
 
     std::cout << "Testing pwm..." << std::endl;
-    const auto light = PwmPin(
+    auto light = PwmPin(
         PinName::Pwm_P9_22,
         std::chrono::nanoseconds(500000000),
         std::chrono::nanoseconds(1000000000)

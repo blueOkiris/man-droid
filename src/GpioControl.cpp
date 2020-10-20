@@ -20,7 +20,7 @@ PwmPin::PwmPin(
         const PinName &pin,
         const std::chrono::nanoseconds &duty,
         const std::chrono::nanoseconds &period) :
-        _pin(pin), _duty(duty), _period(period) {
+        _pin(pin), _duty(duty), _period(period), _running(false) {
     if(static_cast<int>(pin) > 0) {
         throw NotAPwmPinException(pin);
     }
@@ -30,14 +30,26 @@ PwmPin::PwmPin(
 }
 
 void PwmPin::setDuty(const std::chrono::nanoseconds &duty) {
+    if(_running) {
+        off();
+    }
     _duty = duty;
+    if(_running) {
+        on();
+    }
 }
 
 void PwmPin::setPeriod(const std::chrono::nanoseconds &period) {
+    if(_running) {
+        off();
+    }
     _period = period;
+    if(_running) {
+        on();
+    }
 }
 
-void PwmPin::init() const {
+void PwmPin::init() {
     const auto pinFolder = _pwmPinFolder(_pin);
     const auto chipFolder = _pwmPinChipFolder(_pin);
     const auto pinId = _pwmPinChipId(_pin);
@@ -66,7 +78,7 @@ void PwmPin::init() const {
     dutyFile.close();
 }
 
-void PwmPin::on() const {
+void PwmPin::on() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 1 > /sys/class/pwmchip1/pwm-1:0/enable
@@ -75,9 +87,11 @@ void PwmPin::on() const {
     std::ofstream enableFile(enableFileName.str());
     enableFile << "1\n";
     enableFile.close();
+
+    _running = true;
 }
 
-void PwmPin::off() const {
+void PwmPin::off() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 0 > /sys/class/pwmchip1/pwm-1:0/enable
@@ -86,9 +100,15 @@ void PwmPin::off() const {
     std::ofstream enableFile(enableFileName.str());
     enableFile << "0\n";
     enableFile.close();
+
+    _running = false;
 }
 
-void PwmPin::deInit() const {
+bool PwmPin::isRunning() {
+    return _running;
+}
+
+void PwmPin::deInit() {
     off();
     
     const auto chipFolder = _pwmPinChipFolder(_pin);
