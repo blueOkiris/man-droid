@@ -6,6 +6,9 @@
 #include <sstream>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <GpioControl.hpp>
 
 using namespace mandroid;
@@ -80,10 +83,16 @@ void PwmPin::on() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
-    std::stringstream enableCmd;
+    /*std::stringstream enableCmd;
     enableCmd << "echo 1 > " << pinFolder << "/enable";
     std::cout << enableCmd.str() << std::endl;
-    system(enableCmd.str().c_str());
+    system(enableCmd.str().c_str());*/
+    std::stringstream enableFileName;
+    enableFileName << pinFolder << "/enable";
+    int fd;
+    fd = open(enableFileName.str().c_str(), O_WRONLY);
+    write(fd, "1", 1);
+    close(fd);
 
     _running = true;
 }
