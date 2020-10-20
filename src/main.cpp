@@ -4,18 +4,7 @@
 
 using namespace mandroid;
 
-int main(int argc, char **args) {
-    std::cout << "Initializing the Mandroid...";
-
-    if(argc < 2) {
-        std::cout << "This application requires Google's Speech to Text API"
-            << std::endl
-            << "Please provide the JSON file with your credentials as"
-            << " and argument" << std::endl;
-    } else if(argc > 2) {
-        std::cout << "Too many arguments provided!";
-    }
-
+inline void testPwm() {
     std::cout << "Testing pwm..." << std::endl;
     auto light = PwmPin(
         PinName::Pwm_P9_22,
@@ -30,6 +19,21 @@ int main(int argc, char **args) {
     std::cin >> waitStr;
 
     light.deInit();
+}
+
+int main(int argc, char **args) {
+    std::cout << "Initializing the Mandroid...";
+
+    if(argc < 2) {
+        std::cout << "This application requires Google's Speech to Text API"
+            << std::endl
+            << "Please provide the JSON file with your credentials as"
+            << " and argument" << std::endl;
+    } else if(argc > 2) {
+        std::cout << "Too many arguments provided!";
+    }
+
+    //testPwm();
 
     return 0;
 }
