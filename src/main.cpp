@@ -38,7 +38,7 @@ inline void testServo() {
 }
 
 int main(int argc, char **args) {
-    std::cout << "Initializing the Mandroid...";
+    std::cout << "Initializing the Mandroid..." << std::endl;
 
     if(argc < 2) {
         std::cout << "This application requires Google's Speech to Text API"
