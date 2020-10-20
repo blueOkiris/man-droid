@@ -1,6 +1,8 @@
 #include <iostream>
 #include <chrono>
+#include <thread>
 #include <GpioControl.hpp>
+#include <Servo.hpp>
 
 using namespace mandroid;
 
@@ -21,6 +23,19 @@ inline void testPwm() {
     light.deInit();
 }
 
+inline void testServo() {
+    auto servo = Servo(PinName::Pwm_P9_22);
+    servo.start();
+    for(int i = 0; i < 31; i++) {
+        servo.setAngle(i);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    for(int i = 30; i >= 0; i--) {
+        servo.setAngle(i);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid...";
 
@@ -34,6 +49,7 @@ int main(int argc, char **args) {
     }
 
     //testPwm();
+    testServo();
 
     return 0;
 }
