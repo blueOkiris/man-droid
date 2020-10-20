@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
-using Google.Cloud.Speech.V1;
 
 namespace mandroid {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine("Initializing the Mandroid...");
+
             if(args.Length < 1) {
                 Console.WriteLine(
                     "This application requires Google's Speech to Text API"
@@ -17,15 +17,10 @@ namespace mandroid {
                 Console.WriteLine("Too many arguments provided!");
             }
 
-            var credentiaFileName = args[0];
-            Process.Start(
-                "export GOOGLE_APPLICATION_CREDENTIALS=" + credentiaFileName
-            );
-
+            Console.WriteLine("Testing pwm...");
             var light = new PwmPin(PinName.PwmP9_22, 500000000, 1000000000);
             light.Init();
             light.On();
-
             Console.Write("Press enter to end...");
             light.DeInit();
         }
