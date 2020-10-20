@@ -36,14 +36,10 @@ void PwmPin::init() const {
 
     if(!directoryExists(pinFolder)) {
         // Ex: echo 0 > /sys/class/pwmchip1/export
-        std::stringstream exportFileName;
-        exportFileName << chipFolder << "/export";
-        std::cout << pinFolder << std::endl;
-        std::cout << exportFileName.str() << std::endl;
-        std::cout << pinId << std::endl;
-        std::ofstream exportFile(exportFileName.str());
-        exportFile << pinId << "\n";
-        exportFile.close();
+        std::stringstream exportCmd;
+        exportCmd << "echo " << pinId << " > " << chipFolder << "/export";
+        std::cout << exportCmd.str() << std::endl;
+        system(exportCmd.str().c_str());
     }
 
     // Ex: echo 1000000 > /sys/class/pwmchip1/pwm-1:0/period 
