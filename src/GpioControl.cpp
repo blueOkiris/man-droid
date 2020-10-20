@@ -85,7 +85,6 @@ void PwmPin::on() {
     // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
     std::stringstream enableCmd;
     enableCmd << "echo 1 > " << pinFolder << "/enable";
-    std::cout << enableCmd.str() << std::endl;
     system(enableCmd.str().c_str());
 
     _running = true;
