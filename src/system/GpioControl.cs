@@ -2,7 +2,7 @@ using System;
 using System.IO;
 
 namespace mandroid {
-    enum Pin {
+    enum PinName {
         PwmP9_22 = 0
     }
 
@@ -14,10 +14,10 @@ namespace mandroid {
     }
 
     class PwmPin : GpioPin {
-        private Pin pin;
+        private PinName pin;
         private long dutyNs, periodNs;
         
-        public PwmPin(Pin pin, long dutyNs, long periodNs) {
+        public PwmPin(PinName pin, long dutyNs, long periodNs) {
             this.pin = pin;
             this.dutyNs = dutyNs;
             this.periodNs = periodNs;
@@ -55,14 +55,16 @@ namespace mandroid {
         }
 
         public void DeInit() {
+            Off();
+            
             var chipFolder = pwmPinChipFolder(pin);
             var pinId = pwmPinChipId(pin);
             File.WriteAllText(chipFolder + "/unexport", pinId);
         }
 
-        private static string pwmPinChipFolder(Pin pin) {
+        private static string pwmPinChipFolder(PinName pin) {
             switch(pin) {
-                case Pin.PwmP9_22:
+                case PinName.PwmP9_22:
                     return "/sys/class/pwmchip1/pwm-1:0/";
                 
                 default:
@@ -70,9 +72,9 @@ namespace mandroid {
             }
         }
 
-        private static string pwmPinFolder(Pin pin) {
+        private static string pwmPinFolder(PinName pin) {
             switch(pin) {
-                case Pin.PwmP9_22:
+                case PinName.PwmP9_22:
                     return "/sys/class/pwmchip1/pwm-1:0/";
                 
                 default:
@@ -80,9 +82,9 @@ namespace mandroid {
             }
         }
 
-        private static string pwmPinChipId(Pin pin) {
+        private static string pwmPinChipId(PinName pin) {
             switch(pin) {
-                case Pin.PwmP9_22:
+                case PinName.PwmP9_22:
                     return "0";
                 
                 default:
@@ -92,7 +94,7 @@ namespace mandroid {
     }
 
     class NotAPwmPinException : Exception {
-        public NotAPwmPinException(Pin pin) :
+        public NotAPwmPinException(PinName pin) :
                 base("Provided pin '" + pin + "' is not a pwm pin") {
         }
     }

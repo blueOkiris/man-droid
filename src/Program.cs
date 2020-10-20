@@ -22,7 +22,12 @@ namespace mandroid {
                 "export GOOGLE_APPLICATION_CREDENTIALS=" + credentiaFileName
             );
 
-            
+            var light = new PwmPin(PinName.PwmP9_22, 500000000, 1000000000);
+            light.Init();
+            light.On();
+
+            Console.Write("Press enter to end...");
+            light.DeInit();
         }
     }
 }
