@@ -21,7 +21,7 @@ PwmPin::PwmPin(
         const std::chrono::nanoseconds &duty,
         const std::chrono::nanoseconds &period) :
         _pin(pin), _duty(duty), _period(period) {
-    if(static_cast<int>(pin) < 1) {
+    if(static_cast<int>(pin) > 0) {
         throw NotAPwmPinException(pin);
     }
     if(duty >= period) {
