@@ -22,7 +22,7 @@ namespace mandroid {
                 "export GOOGLE_APPLICATION_CREDENTIALS=" + credentiaFileName
             );
 
-            var speech = SpeechClient.Create();
+            
         }
     }
 }
