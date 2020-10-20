@@ -38,6 +38,8 @@ void PwmPin::init() const {
         // Ex: echo 0 > /sys/class/pwmchip1/export
         std::stringstream exportFileName;
         exportFileName << chipFolder << "/export";
+        std::cout << pinFolder << std::endl;
+        std::cout << exportFileName.str() << std::endl;
         std::ofstream exportFile(exportFileName.str());
         exportFile << pinId << "\n";
         exportFile.close();

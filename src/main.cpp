@@ -26,7 +26,7 @@ int main(int argc, char **args) {
     light.on();
 
     std::string waitStr;
-    std::cout << "Press enter to end...";
+    std::cout << "Type a short response and press enter to end...";
     std::cin >> waitStr;
 
     light.deInit();
