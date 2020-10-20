@@ -59,11 +59,6 @@ void PwmPin::init() {
         std::stringstream exportCmd;
         exportCmd << "echo " << pinId << " > " << chipFolder << "/export";
         system(exportCmd.str().c_str());
-        /*std::stringstream exportFileName;
-        exportFileName << chipFolder << "/export";
-        std::ofstream exportFile(exportFileName.str());
-        exportFile << pinId << "\n";
-        exportFile.close();*/
     }
 
     // Ex: echo 1000000 > /sys/class/pwm/pwmchip1/pwm-1:0/period 
@@ -85,11 +80,9 @@ void PwmPin::on() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
-    std::stringstream enableFileName;
-    enableFileName << pinFolder << "/enable";
-    std::ofstream enableFile(enableFileName.str());
-    enableFile << "1\n";
-    enableFile.close();
+    std::stringstream enableCmd;
+    enableCmd << "echo 1 > " << pinFolder << "/enable";
+    system(enableCmd.str().c_str());
 
     _running = true;
 }
@@ -98,11 +91,9 @@ void PwmPin::off() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 0 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
-    std::stringstream enableFileName;
-    enableFileName << pinFolder << "/enable";
-    std::ofstream enableFile(enableFileName.str());
-    enableFile << "0\n";
-    enableFile.close();
+    std::stringstream disableCmd;
+    disableCmd << "echo 0 > " << pinFolder << "/enable";
+    system(disableCmd.str().c_str());
 
     _running = false;
 }
