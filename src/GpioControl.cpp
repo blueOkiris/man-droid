@@ -55,7 +55,7 @@ void PwmPin::init() {
     const auto pinId = _pwmPinChipId(_pin);
 
     if(!directoryExists(pinFolder)) {
-        // Ex: echo 0 > /sys/class/pwmchip1/export
+        // Ex: echo 0 > /sys/class/pwm/pwmchip1/export
         std::stringstream exportCmd;
         exportCmd << "echo " << pinId << " > " << chipFolder << "/export";
         system(exportCmd.str().c_str());
@@ -66,14 +66,14 @@ void PwmPin::init() {
         exportFile.close();*/
     }
 
-    // Ex: echo 1000000 > /sys/class/pwmchip1/pwm-1:0/period 
+    // Ex: echo 1000000 > /sys/class/pwm/pwmchip1/pwm-1:0/period 
     std::stringstream periodFileName;
     periodFileName << pinFolder << "/period";
     std::ofstream periodFile(periodFileName.str());
     periodFile << _period.count() << "\n";
     periodFile.close();
 
-    // Ex: echo 500000 > /sys/class/pwmchip1/pwm-1:0/duty_cycle
+    // Ex: echo 500000 > /sys/class/pwm/pwmchip1/pwm-1:0/duty_cycle
     std::stringstream dutyFileName;
     dutyFileName << pinFolder << "/duty_cycle";
     std::ofstream dutyFile(dutyFileName.str());
@@ -84,7 +84,7 @@ void PwmPin::init() {
 void PwmPin::on() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
-    // Ex: echo 1 > /sys/class/pwmchip1/pwm-1:0/enable
+    // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
     std::stringstream enableFileName;
     enableFileName << pinFolder << "/enable";
     std::ofstream enableFile(enableFileName.str());
@@ -97,7 +97,7 @@ void PwmPin::on() {
 void PwmPin::off() {
     const auto pinFolder = _pwmPinFolder(_pin);
 
-    // Ex: echo 0 > /sys/class/pwmchip1/pwm-1:0/enable
+    // Ex: echo 0 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
     std::stringstream enableFileName;
     enableFileName << pinFolder << "/enable";
     std::ofstream enableFile(enableFileName.str());
@@ -127,7 +127,7 @@ void PwmPin::deInit() {
 std::string PwmPin::_pwmPinChipFolder(const PinName &pin) {
     switch(pin) {
         case PinName::Pwm_P9_22:
-            return "/sys/class/pwmchip1/pwm";
+            return "/sys/class/pwm/pwmchip1";
         
         default:
             return "";
