@@ -30,4 +30,4 @@ obj/%.o : src/%.cpp
 
 # Main targets
 $(OBJNAME) : $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $(OBJS)
+	$(LD) -o $@ $(OBJS) $(LDFLAGS)

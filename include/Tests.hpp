@@ -44,6 +44,6 @@ namespace mandroid {
         std::cout << "Testing synthesis..." << std::endl;
         auto synth = SpeechSynthesizer("audio");
         std::cout << "Saying \"Hello, world!\"" << std::endl;
-        synth.say(L"hɛllowɚld");
+        synth.say("h ɛ l l o w ɚ l d");
     }
 }
