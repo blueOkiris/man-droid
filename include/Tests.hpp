@@ -30,11 +30,11 @@ namespace mandroid {
         servo.start();
         for(int i = 0; i < 31; i++) {
             servo.setAngle(i);
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
         for(int i = 30; i >= 0; i--) {
             servo.setAngle(i);
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
         servo.stop();
         std::cout << "Done testing servo." << std::endl;
@@ -44,6 +44,8 @@ namespace mandroid {
         std::cout << "Testing synthesis..." << std::endl;
         auto synth = SpeechSynthesizer("audio");
         std::cout << "Saying \"Hello, world!\"" << std::endl;
-        synth.say("h ɛ l l o w ɚ l d");
+        synth.say("h ɛ l o");
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        synth.say("w ɚ uhl d");
     }
 }

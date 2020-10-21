@@ -9,12 +9,13 @@
 using namespace mandroid;
 
 static const std::vector<std::string> ipaSymbols = {
-    "i", "y", "u", "ɪ", "ʊ", "e", "o", "ə", "ɚ", "ɛ", "ʌ", "ɔ", "æ", "a", "ɒ",
-    "p", "b", "t", "d", "c", "ɟ", "k", "g", "ʔ",
+    "i", "u", "ɪ", "ʊ", "e", "o", "ɚ", "ɛ", "ʌ", "æ", "a",
+    "p", "b", "t", "d", "k", "g",
     "m", "n", "ɲ", "ŋ",
-    "r", "ɹ", "l"
+    "ɹ", "l",
+    "aj", "aʊ",
     "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "x", "h"
-    "j", "w"
+    "j", "w", "uhl",
 };
 
 SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) {
@@ -32,7 +33,7 @@ SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) {
     
     for(const auto &ipaSymbol : ipaSymbols) {
         std::stringstream fileName;
-        fileName << audioFolder << "/" << ipaSymbol;
+        fileName << audioFolder << "/" << ipaSymbol << ".wav";
         auto sound = Mix_LoadWAV(fileName.str().c_str());
         if(sound == NULL) {
             throw SpeechSynthesisIntializationException(
@@ -61,7 +62,8 @@ SpeechSynthesisIntializationException::SpeechSynthesisIntializationException(
 }
 
 const char *SpeechSynthesisIntializationException::what() const throw() {
-    return std::string(
-            "Failed to initialize speech synthesisizer. SDL error: " + _message
-        ).c_str();
+    std::stringstream error;
+    error << "Failed to initialize speech synthesisizer. SDL error: "
+        << _message;
+    return error.str().c_str();
 }
