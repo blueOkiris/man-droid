@@ -34,6 +34,10 @@ Give step by step instructions on how to install your project.
 
 * If there is extra hardware needed, include links to where it can be obtained.
 
+SDL2_mixer is required for speech synthesis.
+
+To install: `sudo apt -y install libsdl2-dev libsdl2-mixer-dev`
+
 ## User Instructions
 
 Once everything is installed, how do you use the program? Give details here, so if you have a long user manual, link to it here.

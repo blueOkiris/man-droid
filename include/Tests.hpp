@@ -2,8 +2,10 @@
 
 #include <chrono>
 #include <thread>
+#include <string>
 #include <GpioControl.hpp>
 #include <Servo.hpp>
+#include <Speech.hpp>
 
 namespace mandroid {
     inline void testPwm() {
@@ -15,15 +17,15 @@ namespace mandroid {
         );
         light.init();
         light.on();
-
         std::string waitStr;
         std::cout << "Type a short response and press enter to end...";
         std::cin >> waitStr;
-
         light.deInit();
+        std::cout << "Done testing pwm." << std::endl;
     }
 
     inline void testServo() {
+        std::cout << "Testing servo..." << std::endl;
         auto servo = Servo(PinName::Pwm_P9_22);
         servo.start();
         for(int i = 0; i < 31; i++) {
@@ -35,5 +37,13 @@ namespace mandroid {
             std::this_thread::sleep_for(std::chrono::milliseconds(250));
         }
         servo.stop();
+        std::cout << "Done testing servo." << std::endl;
+    }
+    
+    inline void testSpeechSynthesis() {
+        std::cout << "Testing synthesis..." << std::endl;
+        auto synth = SpeechSynthesizer("audio");
+        std::cout << "Saying \"Hello, world!\"" << std::endl;
+        synth.say(L"hɛllowɚld");
     }
 }

@@ -1,3 +1,5 @@
+#pragma GCC diagnostic ignored "-Wunused-result"
+
 #include <fstream>
 #include <exception>
 #include <iostream>
