@@ -4,18 +4,15 @@
 
 ![project image](images/temp-image.png)
 
-
 A humanoid talking robot head.
 
 The head listens to you with a microphone, formulates a response, and then replies using speech synthesis while moving its mouth.
 
-Give two sentences telling what works.
+Currently, I have PWM working on the beaglebone.
 
-Give two sentences telling what isn't working.
+Speech processing, the primitive chat-bot, speech synthesis, and servo control are not working.
 
-End with a two sentence conclusion.
-
-The sentence count is approximate and only to give an idea of the expected length.
+An example of a much more complex version of what I'm aiming for can be found [here](https://www.youtube.com/watch?v=WN9IdpB2-oo). At a minimum, this robot will respond to some speech input, move its mouth a bit, and output some speech output. If I can't build a complex chat bot in time, that's okay with me. I plan to focus on the other three parts more than anything else.
 
 ## Packaging
 
