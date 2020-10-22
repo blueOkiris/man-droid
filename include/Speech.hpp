@@ -18,13 +18,13 @@ namespace mandroid {
     class SpeechSynthesizer {
         private:
             // Possibly replace with smart pointers in future
-            std::map<std::string, Mix_Chunk *> _speechTable;
-            Servo _mouth;
+            const std::map<std::string, Mix_Chunk *> _speechTable;
+            const Servo _mouth;
             
         public:
             SpeechSynthesizer(const std::string &audioFolder);
             ~SpeechSynthesizer();
-            void say(const std::string &ipa);
+            void say(const std::string &ipa) const;
     };
     
     struct SpeechSynthesisIntializationException : public std::exception {

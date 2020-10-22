@@ -6,6 +6,6 @@ namespace mandroid {
     class SpeechRecognizer {
         public:
             SpeechRecognizer();
-            std::string listen();
+            std::string listen() const;
     };
 }

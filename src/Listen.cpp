@@ -11,7 +11,7 @@ SpeechRecognizer::SpeechRecognizer() {
 }
 
 // Dangerous C-like code *shivers*
-std::string SpeechRecognizer::listen() {
+std::string SpeechRecognizer::listen() const {
     pybind11::scoped_interpreter guard{};
     auto listenModule = pybind11::module::import("src.listen");
     auto result = listenModule.attr("speechToText")();

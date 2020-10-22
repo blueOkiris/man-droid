@@ -11,7 +11,7 @@
 namespace mandroid {
     inline void testPwm() {
         std::cout << "Testing pwm..." << std::endl;
-        auto light = PwmPin(
+        const auto light = PwmPin(
             PinName::Pwm_P9_22,
             std::chrono::nanoseconds(500000000),
             std::chrono::nanoseconds(1000000000)
@@ -27,7 +27,7 @@ namespace mandroid {
 
     inline void testServo() {
         std::cout << "Testing servo..." << std::endl;
-        auto servo = Servo(PinName::Pwm_P9_22);
+        const auto servo = Servo(PinName::Pwm_P9_22);
         servo.start();
         for(int i = 0; i < 31; i++) {
             servo.setAngle(i);
@@ -43,7 +43,7 @@ namespace mandroid {
     
     inline void testSpeechSynthesis() {
         std::cout << "Testing synthesis..." << std::endl;
-        auto synth = SpeechSynthesizer("audio");
+        const auto synth = SpeechSynthesizer("audio");
         std::cout << "Saying \"Hello, world!\"" << std::endl;
         synth.say("h ɛ . uhl o");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -60,7 +60,7 @@ namespace mandroid {
     }
     
     inline void testSpeechRecognition() {
-        auto listener = SpeechRecognizer();
+        const auto listener = SpeechRecognizer();
         const auto speech = listener.listen();
         std::cout << "You said: '" << speech << "'" << std::endl;
     }

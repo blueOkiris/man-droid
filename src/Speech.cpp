@@ -26,8 +26,10 @@ static const int mouthMaxAngle_g = 90;
 static const int mouthMinAngle_g = 0;
 static const PinName mouthPin_g = PinName::Pwm_P9_22;
 
-SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
-        _mouth(mouthPin_g) {
+inline std::map<std::string, Mix_Chunk *> generateSpeechTable(
+        const std::string &audioFolder) {
+    std::map<std::string, Mix_Chunk *> speechTable;
+    
     if(SDL_Init(SDL_INIT_AUDIO)) {
         throw SpeechSynthesisIntializationException(
             std::string(SDL_GetError())
@@ -49,9 +51,14 @@ SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
                 std::string(Mix_GetError())
             );
         }
-        _speechTable[ipaSymbol] = sound;
+        speechTable[ipaSymbol] = sound;
     }
     
+    return speechTable;
+}
+
+SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
+        _speechTable(generateSpeechTable(audioFolder)), _mouth(mouthPin_g) {
     _mouth.start();
     _mouth.setAngle(mouthMinAngle_g);
 }
@@ -59,14 +66,13 @@ SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
 SpeechSynthesizer::~SpeechSynthesizer() {
     for(auto &symbolFilePair : _speechTable) {
         Mix_FreeChunk(symbolFilePair.second);
-        symbolFilePair.second = NULL;
     }
     Mix_Quit();
     SDL_Quit();
     _mouth.stop();
 }
 
-void SpeechSynthesizer::say(const std::string &ipa) {
+void SpeechSynthesizer::say(const std::string &ipa) const {
     auto ipaStrMut = ipa;
     if(*(ipaStrMut.end() - 1) != ' ') {
         ipaStrMut += ' ';
@@ -78,7 +84,7 @@ void SpeechSynthesizer::say(const std::string &ipa) {
             _mouth.setAngle(mouthMinAngle_g);
         } else {
             _mouth.setAngle(mouthMaxAngle_g);
-            Mix_PlayChannel(0, _speechTable[sound], 0);
+            Mix_PlayChannel(0, _speechTable.at(sound), 0);
             while(Mix_Playing(0));
         }
         ipaStrMut.erase(0, pos + 1);

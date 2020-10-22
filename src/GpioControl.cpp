@@ -22,7 +22,7 @@ PwmPin::PwmPin(
         const PinName &pin,
         const std::chrono::nanoseconds &duty,
         const std::chrono::nanoseconds &period) :
-        _pin(pin), _duty(duty), _period(period), _running(false) {
+        _pin(pin) {
     if(static_cast<int>(pin) > 0) {
         throw NotAPwmPinException(pin);
     }
@@ -31,27 +31,47 @@ PwmPin::PwmPin(
     }
 }
 
-void PwmPin::setDuty(const std::chrono::nanoseconds &duty) {
-    if(_running) {
+void PwmPin::setDuty(const std::chrono::nanoseconds &duty) const {
+    const auto pinFolder = _pwmPinFolder(_pin);
+    const auto wasRunning = isRunning();
+    
+    if(wasRunning) {
         off();
     }
-    _duty = duty;
-    if(_running) {
+
+    // Ex: echo 500000 > /sys/class/pwm/pwmchip1/pwm-1:0/duty_cycle
+    std::stringstream dutyFileName;
+    dutyFileName << pinFolder << "/duty_cycle";
+    std::ofstream dutyFile(dutyFileName.str());
+    dutyFile << duty.count() << "\n";
+    dutyFile.close();
+    
+    if(wasRunning) {
         on();
     }
 }
 
-void PwmPin::setPeriod(const std::chrono::nanoseconds &period) {
-    if(_running) {
+void PwmPin::setPeriod(const std::chrono::nanoseconds &period) const {
+    const auto pinFolder = _pwmPinFolder(_pin);
+    const auto wasRunning = isRunning();
+    
+    if(wasRunning) {
         off();
     }
-    _period = period;
-    if(_running) {
+    
+    // Ex: echo 1000000 > /sys/class/pwm/pwmchip1/pwm-1:0/period 
+    std::stringstream periodFileName;
+    periodFileName << pinFolder << "/period";
+    std::ofstream periodFile(periodFileName.str());
+    periodFile << period.count() << "\n";
+    periodFile.close();
+    
+    if(wasRunning) {
         on();
     }
 }
 
-void PwmPin::init() {
+void PwmPin::init() const {
     const auto pinFolder = _pwmPinFolder(_pin);
     const auto chipFolder = _pwmPinChipFolder(_pin);
     const auto pinId = _pwmPinChipId(_pin);
@@ -62,49 +82,42 @@ void PwmPin::init() {
         exportCmd << "echo " << pinId << " > " << chipFolder << "/export";
         system(exportCmd.str().c_str());
     }
-
-    // Ex: echo 1000000 > /sys/class/pwm/pwmchip1/pwm-1:0/period 
-    std::stringstream periodFileName;
-    periodFileName << pinFolder << "/period";
-    std::ofstream periodFile(periodFileName.str());
-    periodFile << _period.count() << "\n";
-    periodFile.close();
-
-    // Ex: echo 500000 > /sys/class/pwm/pwmchip1/pwm-1:0/duty_cycle
-    std::stringstream dutyFileName;
-    dutyFileName << pinFolder << "/duty_cycle";
-    std::ofstream dutyFile(dutyFileName.str());
-    dutyFile << _duty.count() << "\n";
-    dutyFile.close();
+    
+    // Just default values
+    setPeriod(std::chrono::microseconds(1000));
+    setDuty(std::chrono::microseconds(500));
 }
 
-void PwmPin::on() {
+void PwmPin::on() const {
     const auto pinFolder = _pwmPinFolder(_pin);
 
     // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
     std::stringstream enableCmd;
     enableCmd << "echo 1 > " << pinFolder << "/enable";
     system(enableCmd.str().c_str());
-
-    _running = true;
 }
 
-void PwmPin::off() {
+void PwmPin::off() const {
     const auto pinFolder = _pwmPinFolder(_pin);
-
-    // Ex: echo 0 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
+    
+    // Ex: echo 1 > /sys/class/pwm/pwmchip1/pwm-1:0/enable
     std::stringstream disableCmd;
     disableCmd << "echo 0 > " << pinFolder << "/enable";
     system(disableCmd.str().c_str());
-
-    _running = false;
 }
 
-bool PwmPin::isRunning() {
-    return _running;
+bool PwmPin::isRunning() const {
+    const auto pinFolder = _pwmPinFolder(_pin);
+    std::stringstream enableFileName;
+    enableFileName << pinFolder << "/enable";
+    std::ifstream enableFile(enableFileName.str());
+    int value = 0;
+    enableFile >> value;
+    enableFile.close();
+    return value == 1;
 }
 
-void PwmPin::deInit() {
+void PwmPin::deInit() const {
     off();
     
     const auto chipFolder = _pwmPinChipFolder(_pin);

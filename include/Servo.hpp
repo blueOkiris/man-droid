@@ -5,13 +5,13 @@
 namespace mandroid {
     class Servo {
         private:
-            PwmPin _pin;
+            const PwmPin _pin;
         
         public:
             Servo(PinName pin);
 
-            void setAngle(int angle);
-            void start();
-            void stop();
+            void setAngle(int angle) const;
+            void start() const;
+            void stop() const;
     };
 }

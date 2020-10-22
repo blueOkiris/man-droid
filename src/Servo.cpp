@@ -14,7 +14,7 @@ Servo::Servo(PinName pin) :
         ) {
 }
 
-void Servo::setAngle(int angle) {
+void Servo::setAngle(int angle) const {
     const auto minPulse = std::chrono::nanoseconds(1000000);
     const auto maxPulse = std::chrono::nanoseconds(2000000);
     const auto pulseRange = maxPulse - minPulse;
@@ -23,10 +23,10 @@ void Servo::setAngle(int angle) {
     _pin.setDuty(pulseWidth);
 }
 
-void Servo::start() {
+void Servo::start() const {
     _pin.init();
 }
 
-void Servo::stop() {
+void Servo::stop() const {
     _pin.deInit();
 }

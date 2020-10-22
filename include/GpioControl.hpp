@@ -10,18 +10,16 @@ namespace mandroid {
 
     class GpioPin {
         public:
-            virtual void init() = 0;
-            virtual void on() = 0;
-            virtual void off() = 0;
-            virtual bool isRunning() = 0;
-            virtual void deInit() = 0;
+            virtual void init() const = 0;
+            virtual void on() const = 0;
+            virtual void off() const = 0;
+            virtual bool isRunning() const = 0;
+            virtual void deInit() const = 0;
     };
 
     class PwmPin : public GpioPin {
         private:
             const PinName _pin;
-            std::chrono::nanoseconds _duty, _period;
-            bool _running;
 
             static std::string _pwmPinChipFolder(const PinName &pin);
             static std::string _pwmPinFolder(const PinName &pin);
@@ -33,14 +31,14 @@ namespace mandroid {
                 const std::chrono::nanoseconds &duty,
                 const std::chrono::nanoseconds &period
             );
-            void setDuty(const std::chrono::nanoseconds &duty);
-            void setPeriod(const std::chrono::nanoseconds &period);
+            void setDuty(const std::chrono::nanoseconds &duty) const;
+            void setPeriod(const std::chrono::nanoseconds &period) const;
 
-            void init() override;
-            void on() override;
-            void off() override;
-            bool isRunning();
-            void deInit() override;
+            void init() const override;
+            void on() const override;
+            void off() const override;
+            bool isRunning() const override;
+            void deInit() const override;
     };
 
     struct GpioControlException : public std::exception {
