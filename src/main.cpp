@@ -11,8 +11,10 @@ int main(int argc, char **args) {
             << std::endl
             << "Please provide the JSON file with your credentials as"
             << " and argument" << std::endl;
+        return -1;
     } else if(argc > 2) {
         std::cout << "Too many arguments provided!";
+        return -1;
     }
 
     //testPwm();

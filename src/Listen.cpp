@@ -1,20 +1,20 @@
 #include <string>
-#include <Python.h>
+#include <iostream>
+#include <pybind11/embed.h>
 #include <Listen.hpp>
 
 using namespace mandroid;
 
 SpeechRecognizer::SpeechRecognizer() {
-    //import speech_recognition
-    Py_SetProgramName(L"RecognitionApp");
-    Py_Initialize();
-    PyRun_SimpleString(
-        "from time import time,ctime\n"
-        "print('Today is ' + str(ctime(time())))\n"
-    );
-    Py_Finalize();
+    pybind11::scoped_interpreter guard {};
+    pybind11::print("Initialized speech recognition!");
 }
 
+// Dangerous C-like code *shivers*
 std::string SpeechRecognizer::listen() {
-    return "";
+    pybind11::scoped_interpreter guard{};
+    auto listenModule = pybind11::module::import("src.listen");
+    auto result = listenModule.attr("speechToText")();
+    
+    return result.cast<std::string>();
 }
