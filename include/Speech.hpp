@@ -12,12 +12,14 @@
 #include <map>
 #include <string>
 #include <SDL2/SDL_mixer.h>
+#include <Servo.hpp>
 
 namespace mandroid {
     class SpeechSynthesizer {
         private:
             // Possibly replace with smart pointers in future
             std::map<std::string, Mix_Chunk *> _speechTable;
+            Servo _mouth;
             
         public:
             SpeechSynthesizer(const std::string &audioFolder);

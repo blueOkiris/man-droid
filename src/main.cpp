@@ -8,8 +8,8 @@ int main(int argc, char **args) {
     
     //testPwm();
     //testServo();
-    //testSpeechSynthesis();
     testSpeechRecognition();
+    testSpeechSynthesis();
 
     return 0;
 }
