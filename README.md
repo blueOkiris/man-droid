@@ -44,13 +44,17 @@ Here's the explanation
 
  - Download from git
  
- - Build with make after installing dependencies
+ - Dependencies:
 
- - SDL2_mixer is required for speech synthesis: `libsdl2-dev libsdl2-mixer-dev`
+   + SDL2_mixer is required for speech synthesis: `libsdl2-dev libsdl2-mixer-dev`
 
- - The Python pip library `SpeechRecognition` is required for speech recognition. It relies on: `python3-pyaudio`
+   + The Python pip library `SpeechRecognition` is required for speech recognition. It relies on: `python3-pyaudio`
 
- - The python speech recognition library is called in C++ using pybind: `pybind11-dev`
+   + The python speech recognition library is called in C++ using pybind: `pybind11-dev`
+ 
+ - Build with make
+ 
+ - Install system service for running at start
 
 ## User Instructions
 
