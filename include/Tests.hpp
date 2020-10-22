@@ -6,6 +6,7 @@
 #include <GpioControl.hpp>
 #include <Servo.hpp>
 #include <Speech.hpp>
+#include <Listen.hpp>
 
 namespace mandroid {
     inline void testPwm() {
@@ -56,5 +57,11 @@ namespace mandroid {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         synth.say("h u . m ɪ n z");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+    
+    inline void testSpeechRecognition() {
+        auto listener = SpeechRecognizer();
+        const auto speech = listener.listen();
+        std::cout << "You said: '" << speech << "'" << std::endl;
     }
 }

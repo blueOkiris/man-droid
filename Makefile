@@ -3,9 +3,9 @@ OBJNAME :=  mandroid
 CPPC :=     g++
 CPPFLAGS := -O2 -Werror -Wall -std=c++17
 LD :=       g++
-LDFLAGS :=  -lSDL2 -lSDL2_mixer
+LDFLAGS :=  -lSDL2 -lSDL2_mixer -lpython3.8
 SRC :=      $(wildcard src/*.cpp)
-INCDIRS :=  include
+INCDIRS :=  include /usr/include/python3.8
 
 # Helper Targets
 .PHONY : all

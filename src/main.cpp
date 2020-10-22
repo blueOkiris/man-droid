@@ -17,7 +17,8 @@ int main(int argc, char **args) {
 
     //testPwm();
     //testServo();
-    testSpeechSynthesis();
+    //testSpeechSynthesis();
+    testSpeechRecognition();
 
     return 0;
 }
