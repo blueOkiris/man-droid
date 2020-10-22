@@ -15,8 +15,8 @@ int main(int argc, char **args) {
         std::cout << "Too many arguments provided!";
     }
 
-    testPwm();
-    testServo();
+    //testPwm();
+    //testServo();
     testSpeechSynthesis();
 
     return 0;

@@ -69,7 +69,7 @@ void SpeechSynthesizer::say(const std::string &ipa) {
         } else {
             Mix_PlayChannel(-1, _speechTable[sound], 0);
             //std::cout << sound << std::endl;
-            std::this_thread::sleep_for(std::chrono::milliseconds(150));
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
         ipaStrMut.erase(0, pos + 1);
     }
