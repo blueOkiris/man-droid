@@ -2,6 +2,9 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iostream>
+#include <chrono>
+#include <thread>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <Speech.hpp>
@@ -14,7 +17,7 @@ static const std::vector<std::string> ipaSymbols = {
     "m", "n", "ɲ", "ŋ",
     "ɹ", "l",
     "aj", "aʊ",
-    "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "x", "h"
+    "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "x", "h",
     "j", "w", "uhl",
 };
 
@@ -54,7 +57,22 @@ SpeechSynthesizer::~SpeechSynthesizer() {
 }
 
 void SpeechSynthesizer::say(const std::string &ipa) {
-    
+    auto ipaStrMut = ipa;
+    if(*(ipaStrMut.end() - 1) != ' ') {
+        ipaStrMut += ' ';
+    }
+    size_t pos = 0;
+    while((pos = ipaStrMut.find(" ")) != std::string::npos) {
+        const auto sound = ipaStrMut.substr(0, pos);
+        if(sound == ".") {
+            // TODO: Close mouth
+        } else {
+            Mix_PlayChannel(-1, _speechTable[sound], 0);
+            //std::cout << sound << std::endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(150));
+        }
+        ipaStrMut.erase(0, pos + 1);
+    }
 }
 
 SpeechSynthesisIntializationException::SpeechSynthesisIntializationException(
