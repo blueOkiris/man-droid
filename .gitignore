@@ -1,3 +1,4 @@
 obj/
 mandroid
 .vscode/
+__pycache__

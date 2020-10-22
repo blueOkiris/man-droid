@@ -20,31 +20,37 @@ If you have hardware, consider Small Build, Big Execuition for ideas on the fina
 
 ## Installation Instructions
 
-Give step by step instructions on how to install your project.
+### External Hardware
 
-* Include your github path as a link like this to the read-only git site: https://github.com/MarkAYoder/gitLearn.
+This project was constructed with [this mask](https://www.amazon.com/Realistic-Latex-Halloween-Rubber-Masquerade/dp/B07Y9LSPGD/ref=sr_1_50?dchild=1&keywords=human+costume+mask&qid=1603054888&refinements=p_85%3A2470955011&rnid=2470954011&rps=1&sr=8-50), [these dowels](https://www.amazon.com/Hygloss-Products-4-Inch-12-Inch-10-Pack/dp/B06WWNBRXJ/ref=sr_1_3?dchild=1&keywords=wooden+dowel&qid=1603055087&sr=8-3), [this wooden base](https://www.amazon.com/Better-Crafts-Wooden-Perfect-Projects/dp/B07DDNHGR7/ref=sr_1_4?dchild=1&keywords=wooden+base&qid=1603055130&sr=8-4), and [this servo](https://www.amazon.com/gp/product/B076CNKQX4/ref=crt_ewc_img_dp_1?ie=UTF8&psc=1&smid=A3NMC7084N0TIJ).
 
-* Be sure your README.md is includes an up-to-date and clear description of your project so that someone who comes across you git repository can quickly learn what you did and how they can reproduce it.
+The dowels and wooden base are used to make a framework for holding up the mask as well as holding the beaglebone.
 
-* Include a Makefile for your code if using C.
+Another dowel is attached to a motor, which is attached to the central dowel. The motor's dowel is also connected at the other end to the base of the jaw so that the mouth can be opened.
 
-* Include any additional packages installed via apt. Include install.sh and setup.sh files.
+## Software
 
-* Include kernel mods.
+Here's the installation commands for installing the mandroid software:
 
-* If there is extra hardware needed, include links to where it can be obtained.
+```
+git clone https://github.com/blueOkiris/man-droid
+pip3 install SpeechRecognition
+sudo apt install -y libsdl2-dev libsdl2-mixer-dev python3-pyaudio pybind11-dev
+make
+sudo make install
+```
 
-SDL2_mixer is required for speech synthesis.
+Here's the explanation
 
-To install: `sudo apt -y install libsdl2-dev libsdl2-mixer-dev`
+ - Download from git
+ 
+ - Build with make after installing dependencies
 
-The Python pip library `SpeechRecognition` is required for speech recognition
+ - SDL2_mixer is required for speech synthesis: `libsdl2-dev libsdl2-mixer-dev`
 
-To install: `sudo apt -y install python3-pyaudio`
+ - The Python pip library `SpeechRecognition` is required for speech recognition. It relies on: `python3-pyaudio`
 
-That library makes use of the `PocketSphinx` libray.
-
-Install that with `sudo apt -y install python3-pocketsphinx`
+ - The python speech recognition library is called in C++ using pybind: `pybind11-dev`
 
 ## User Instructions
 

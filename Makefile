@@ -31,3 +31,10 @@ obj/%.o : src/%.cpp
 # Main targets
 $(OBJNAME) : $(OBJS)
 	$(LD) -o $@ $(OBJS) $(LDFLAGS)
+
+.PHONY : install
+install : $(OBJNAME)
+	cp $(OBJNAME) /usr/bin/
+	cp src/mandroid.service /etc/systemd/system/mandroid.service
+	chmod 644 /etc/systemd/system/mandroid.service
+	systemctl enable mandroid.service

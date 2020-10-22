@@ -1,0 +1,9 @@
+[Unit]
+Description=The Mandroid Program
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mandroid
+
+[Install]
+WantedBy=multi-user.target
