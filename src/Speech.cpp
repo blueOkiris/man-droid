@@ -67,9 +67,8 @@ void SpeechSynthesizer::say(const std::string &ipa) {
         if(sound == ".") {
             // TODO: Close mouth
         } else {
-            Mix_PlayChannel(-1, _speechTable[sound], 0);
-            //std::cout << sound << std::endl;
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            Mix_PlayChannel(0, _speechTable[sound], 0);
+            while(Mix_Playing(0));
         }
         ipaStrMut.erase(0, pos + 1);
     }

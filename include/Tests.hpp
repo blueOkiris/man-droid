@@ -54,7 +54,7 @@ namespace mandroid {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         synth.say("a uhl");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        synth.say("h j u . m ɪ n z");
+        synth.say("h u . m ɪ n z");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }
