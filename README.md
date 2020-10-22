@@ -1,8 +1,8 @@
 # Mandroid
 
-## Description
-
 ![project image](images/temp-image.png)
+
+## Description
 
 A humanoid talking robot head.
 
