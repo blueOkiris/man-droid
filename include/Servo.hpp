@@ -11,6 +11,9 @@ namespace mandroid {
         switch(pin) {
             case PinName::P9_22:
                 return "P9_22";
+            
+            default:
+                return "";
         }
     }
     
