@@ -19,13 +19,13 @@ namespace mandroid {
     
     class Servo {
         private:
-            const PinName _pin;
+            const std::string _pinName;
         
         public:
             Servo(PinName pin);
 
-            void setAngle(int angle) const;
             void start() const;
+            void setAngle(int angle) const;
             void stop() const;
     };
 }
