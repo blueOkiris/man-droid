@@ -11,18 +11,19 @@ Servo::Servo(PinName pin) :
 
 void Servo::start() const {
     pybind11::scoped_interpreter guard{};
-    auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("start")(_pinName);
+    auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
+    pwm.attr("start")(_pinName, 97, 60);
 }
 
-void Servo::setAngle(int angle) const {
+void Servo::setAngle(const int &angle) const {
     pybind11::scoped_interpreter guard{};
-    auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("setAngle")(_pinName, angle);
+    auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
+    pwm.attr("set_duty_cycle")(_pinName, dutyFromAngle(angle));
 }
 
 void Servo::stop() const {
     pybind11::scoped_interpreter guard{};
-    auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("stop")(_pinName);
+    auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
+    pwm.attr("stop")(_pinName);
+    pwm.attr("cleanup")();
 }

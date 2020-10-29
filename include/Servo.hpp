@@ -17,6 +17,13 @@ namespace mandroid {
         }
     }
     
+    inline float dutyFromAngle(const int &angle) {
+        const auto dutyMin = 3;
+        const auto dutyMax = 14.5;
+        const auto dutySpan = dutyMax - dutyMin;
+        return 100 - ((((float) angle) / 180) * dutySpan + dutyMin);
+    }
+    
     class Servo {
         private:
             const std::string _pinName;
@@ -25,7 +32,7 @@ namespace mandroid {
             Servo(PinName pin);
 
             void start() const;
-            void setAngle(int angle) const;
+            void setAngle(const int &angle) const;
             void stop() const;
     };
 }
