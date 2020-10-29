@@ -11,21 +11,18 @@ Servo::Servo(PinName pin) :
 
 void Servo::start() const {
     pybind11::scoped_interpreter guard{};
-    const pybind11::bytes byteStr(_pinName);
     auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("start")(byteStr);
+    servoModule.attr("start")(_pinName);
 }
 
 void Servo::setAngle(int angle) const {
     pybind11::scoped_interpreter guard{};
-    const pybind11::bytes byteStr(_pinName);
     auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("setAngle")(byteStr, angle);
+    servoModule.attr("setAngle")(_pinName, angle);
 }
 
 void Servo::stop() const {
     pybind11::scoped_interpreter guard{};
-    const pybind11::bytes byteStr(_pinName);
     auto servoModule = pybind11::module::import("src.servo");
-    servoModule.attr("stop")(byteStr);
+    servoModule.attr("stop")(_pinName);
 }
