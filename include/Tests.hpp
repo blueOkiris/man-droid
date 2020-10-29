@@ -3,31 +3,14 @@
 #include <chrono>
 #include <thread>
 #include <string>
-#include <GpioControl.hpp>
 #include <Servo.hpp>
 #include <Speech.hpp>
 #include <Listen.hpp>
 
 namespace mandroid {
-    inline void testPwm() {
-        std::cout << "Testing pwm..." << std::endl;
-        const auto light = PwmPin(
-            PinName::Pwm_P9_22,
-            std::chrono::nanoseconds(500000000),
-            std::chrono::nanoseconds(1000000000)
-        );
-        light.init();
-        light.on();
-        std::string waitStr;
-        std::cout << "Type a short response and press enter to end...";
-        std::cin >> waitStr;
-        light.deInit();
-        std::cout << "Done testing pwm." << std::endl;
-    }
-
     inline void testServo() {
         std::cout << "Testing servo..." << std::endl;
-        const auto servo = Servo(PinName::Pwm_P9_22);
+        const auto servo = Servo(PinName::P9_22);
         servo.start();
         for(int i = 0; i < 31; i++) {
             servo.setAngle(i);

@@ -1,11 +1,22 @@
 #pragma once
 
-#include <GpioControl.hpp>
+#include <string>
 
 namespace mandroid {
+    enum class PinName {
+        P9_22    
+    };
+    
+    inline std::string pinNameStr(const PinName &pin) {
+        switch(pin) {
+            case PinName::P9_22:
+                return "P9_22";
+        }
+    }
+    
     class Servo {
         private:
-            const PwmPin _pin;
+            const PinName _pin;
         
         public:
             Servo(PinName pin);

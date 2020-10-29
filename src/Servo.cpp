@@ -1,32 +1,28 @@
 #include <chrono>
-#include <GpioControl.hpp>
+#include <string>
+#include <pybind11/embed.h>
 #include <Servo.hpp>
 
 using namespace mandroid;
 
 Servo::Servo(PinName pin) : 
-        _pin(
-            PwmPin(
-                pin,
-                std::chrono::nanoseconds(1000000),
-                std::chrono::nanoseconds(20000000)
-            )
-        ) {
+        _pin(pin) {
 }
 
 void Servo::setAngle(int angle) const {
-    const auto minPulse = std::chrono::nanoseconds(1000000);
-    const auto maxPulse = std::chrono::nanoseconds(2000000);
-    const auto pulseRange = maxPulse - minPulse;
-    const auto pulseWidthPerDeg = pulseRange / 181;
-    const auto pulseWidth = minPulse + (angle * pulseWidthPerDeg);
-    _pin.setDuty(pulseWidth);
+    pybind11::scoped_interpreter guard{};
+    auto servoModule = pybind11::module::import("src.servo");
+    servoModule.attr("setAngle")(pinNameStr(_pin), angle);
 }
 
 void Servo::start() const {
-    _pin.init();
+    pybind11::scoped_interpreter guard{};
+    auto servoModule = pybind11::module::import("src.servo");
+    servoModule.attr("start")(pinNameStr(_pin));
 }
 
 void Servo::stop() const {
-    _pin.deInit();
+    pybind11::scoped_interpreter guard{};
+    auto servoModule = pybind11::module::import("src.servo");
+    servoModule.attr("stop")(pinNameStr(_pin));
 }

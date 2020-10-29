@@ -24,7 +24,7 @@ static const std::vector<std::string> ipaSymbols_g = {
 
 static const int mouthMaxAngle_g = 90;
 static const int mouthMinAngle_g = 0;
-static const PinName mouthPin_g = PinName::Pwm_P9_22;
+static const PinName mouthPin_g = PinName::P9_22;
 
 inline std::map<std::string, Mix_Chunk *> generateSpeechTable(
         const std::string &audioFolder) {
