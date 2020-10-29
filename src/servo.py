@@ -4,6 +4,7 @@ def dutyFromAngle(angle):
     dutyMin = 3
     dutyMax = 14.5
     dutySpan = dutyMax - dutyMin
+    return 100 - ((float(angle) / 180) * dutySpan + dutyMin)
 
 def start(pin):
     pwm.start(pin, 97, 60)
