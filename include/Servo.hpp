@@ -4,18 +4,8 @@
 
 namespace mandroid {
     enum class PinName {
-        P9_22    
+        P9_22 = 922
     };
-    
-    inline std::string pinNameStr(const PinName &pin) {
-        switch(pin) {
-            case PinName::P9_22:
-                return "P9_22";
-            
-            default:
-                return "";
-        }
-    }
     
     inline float dutyFromAngle(const int &angle) {
         const auto dutyMin = 3;
@@ -26,7 +16,7 @@ namespace mandroid {
     
     class Servo {
         private:
-            const std::string _pinName;
+            const int _pinNumber;
         
         public:
             Servo(PinName pin);
