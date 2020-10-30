@@ -1,5 +1,6 @@
 #pragma once
 
+#include <libsoc_pwm.h>
 #include <memory>
 #include <utility>
 
