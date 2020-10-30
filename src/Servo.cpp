@@ -1,3 +1,4 @@
+#include <iostream>
 #include <chrono>
 #include <string>
 #include <pybind11/embed.h>
@@ -14,7 +15,8 @@ void Servo::start() const {
     /*auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
     pwm.attr("start")(pybind11::str(_pinName.c_str()), 97, 60);*/
     auto pwm = pybind11::module::import("src.pwm");
-    pwm.attr("start")(_pinNumber);
+    //std::cout << "C++ Id: " << _pinNumber << std::endl;
+    pwm.attr("start")();
 }
 
 void Servo::setAngle(const int &angle) const {
