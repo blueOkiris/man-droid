@@ -7,7 +7,7 @@ def pinNumberToStr(pin):
         return ''
 
 def start(pinNumber):
-    pwm.start(pinNumberToStr(pinNumber, 97, 60))
+    pwm.start(pinNumberToStr(pinNumber), 97, 60)
 
 def setDuty(pinNumber, duty):
     pwm.set_duty_cycle(pinNumberToStr(pinNumber), duty)
