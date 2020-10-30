@@ -3,6 +3,8 @@ import Adafruit_BBIO.PWM as pwm
 def pinNumberToStr(pin):
     if pin == 922:
         return 'P9_22'
+    else:
+        return ''
 
 def start(pinNumber):
     pwm.start(pinNumberToStr(pinNumber, 97, 60))
