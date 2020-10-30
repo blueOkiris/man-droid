@@ -1,11 +1,22 @@
 #pragma once
 
-#include <string>
+#include <memory>
+#include <utility>
 
 namespace mandroid {
     enum class PinName {
-        P9_22 = 922
+        P9_22
     };
+
+    inline std::pair<int, int> pinNameToChip(const PinName &pin) {
+        switch(pin) {
+            case PinName::P9_22:
+                return std::make_pair<int, int>(0, 0);
+            
+            default:
+                return std::make_pair<int, int>(-1, -1);
+        }
+    }
     
     inline float dutyFromAngle(const int &angle) {
         const auto dutyMin = 3;
@@ -16,10 +27,12 @@ namespace mandroid {
     
     class Servo {
         private:
-            const int _pinNumber;
+            const std::shared_ptr<pwm> _pwm;
+
+            std::shared_ptr<pwm> _generatePwm(const std::pair<int, int> &pinId);
         
         public:
-            Servo(PinName pin);
+            Servo(const PinName &pin);
 
             void start() const;
             void setAngle(const int &angle) const;

@@ -1,39 +1,36 @@
 #include <iostream>
 #include <chrono>
 #include <string>
-#include <pybind11/embed.h>
+#include <libsoc_pwm.h>
+#include <libsoc_debug.h>
 #include <Servo.hpp>
 
 using namespace mandroid;
 
-Servo::Servo(PinName pin) : 
-        _pinNumber(static_cast<int>(pin)) {
+Servo::Servo(const PinName &pin) : 
+        _generatePwm(pinNameToChip(pin)) {
+}
+
+std::shared_ptr<pwm> Servo::_generatePwm(const std::pair<int, int> &pinId) {
+    libsoc_set_debug(1);
+    pwm *pwm = libsoc_pwm_request(_pinId.first, _pinId.second, LS_PWM_SHARED);
+    if(!pwm) {
+        std::cout << "Couldn't start pwm" << std::endl;
+    }
+    return std::make_shared<pwm>(pwm);
 }
 
 void Servo::start() const {
-    pybind11::scoped_interpreter guard{};
-    /*auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
-    pwm.attr("start")(pybind11::str(_pinName.c_str()), 97, 60);*/
-    auto pwm = pybind11::module::import("src.pwm");
-    //std::cout << "C++ Id: " << _pinNumber << std::endl;
-    pwm.attr("start")();
+    libsoc_pwm_set_enabled(_pwm.get());
+    libsoc_pwm_set_period(_pwm.get(), 1000000000 / 60);
+    libsoc_pwm_set_duty(_pwm.get(), 1000000000 / 58);
 }
 
 void Servo::setAngle(const int &angle) const {
-    pybind11::scoped_interpreter guard{};
-    /*auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
-    pwm.attr("set_duty_cycle")(
-        pybind11::str(_pinName.c_str()), dutyFromAngle(angle)
-    );*/
-    auto pwm = pybind11::module::import("src.pwm");
-    pwm.attr("setDuty")(_pinNumber, dutyFromAngle(angle));
+    const auto duty = dutyFromAngle(angle) * 60;
+    libsoc_pwm_set_duty(_pwm.get(), 1000000000 / static_cast<int>(duty));
 }
 
 void Servo::stop() const {
-    pybind11::scoped_interpreter guard{};
-    /*auto pwm = pybind11::module::import("Adafruit_BBIO.PWM");
-    pwm.attr("stop")(pybind11::str(_pinName.c_str()));
-    pwm.attr("cleanup")();*/
-    auto pwm = pybind11::module::import("src.pwm");
-    pwm.attr("stop")(_pinNumber);
+    libsoc_pwm_free(_pwm.get());
 }
