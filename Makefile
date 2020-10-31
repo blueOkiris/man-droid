@@ -4,8 +4,7 @@ CPPC :=     g++
 CPPFLAGS := -Werror -Wall -std=c++17 -g
 LD :=       g++
 LDFLAGS :=  -lSDL2 -lSDL2_mixer \
-            -L/usr/lib/python3.7/config-3.7m-arm-linux-gnueabihf -lpython3.7 \
-			-lsoc
+            -L/usr/lib/python3.7/config-3.7m-arm-linux-gnueabihf -lpython3.7
 SRC :=      $(wildcard src/*.cpp)
 INCDIRS :=  include /usr/include/python3.7 /usr/include/python3.7m
 

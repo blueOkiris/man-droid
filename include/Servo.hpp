@@ -1,32 +1,32 @@
 #pragma once
 
-#include <libsoc_pwm.h>
-#include <memory>
-#include <utility>
+#include <tuple>
+#include <string>
 
 namespace mandroid {
     enum class PinName {
         P9_22
     };
 
-    inline std::pair<int, int> pinNameToChip(const PinName &pin) {
+    inline std::tuple<std::string, std::string, std::string> pinNameToChip(
+            const PinName &pin) {
         switch(pin) {
             case PinName::P9_22:
-                return std::make_pair<int, int>(1, 0);
+                return std::make_tuple<std::string, std::string, std::string>(
+                    "pwmchip1", "pwm-1:0", "0"
+                );
             
             default:
-                return std::make_pair<int, int>(-1, -1);
+                return std::make_tuple<std::string, std::string, std::string>(
+                    "", "", ""
+                );
         }
     }
     
     class Servo {
         private:
             static float _dutyFromAngle(const int &angle);
-
-            const std::shared_ptr<pwm> _pwm;
-            std::shared_ptr<pwm> _generatePwm(
-                const std::pair<int, int> &pinId
-            ) const;
+            const std::tuple<std::string, std::string, std::string> _pinId;
         
         public:
             Servo(const PinName &pin);

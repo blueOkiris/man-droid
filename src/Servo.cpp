@@ -1,21 +1,8 @@
 #include <iostream>
-#include <chrono>
-#include <string>
 #include <utility>
-#include <memory>
-#include <libsoc_pwm.h>
-#include <libsoc_debug.h>
+#include <string>
+#include <fstream>
 #include <Servo.hpp>
-
-/*
- * Version control
- * 
- * Old libsoc used LS_SHARED
- * New versions use LS_PWM_SHARED
- */
-#ifndef LS_PWM_WEAK
-#define LS_PWM_WEAK LS_WEAK
-#endif
 
 using namespace mandroid;
 
@@ -27,32 +14,40 @@ float Servo::_dutyFromAngle(const int &angle) {
 }
 
 Servo::Servo(const PinName &pin) : 
-        _pwm(_generatePwm(pinNameToChip(pin))) {
-}
-
-std::shared_ptr<pwm> Servo::_generatePwm(
-        const std::pair<int, int> &pinId) const {
-    libsoc_set_debug(1);
-    std::shared_ptr<pwm> pwmShared(
-        libsoc_pwm_request(pinId.first, pinId.second, LS_PWM_WEAK)
-    );
-    if(!pwmShared) {
-        std::cout << "Couldn't start pwm" << std::endl;
-    }
-    return pwmShared;
+        _pinId(pinNameToChip(pin)) {
 }
 
 void Servo::start() const {
-    libsoc_pwm_set_enabled(_pwm.get(), ENABLED);
-    libsoc_pwm_set_period(_pwm.get(), 1000000000 / 60);
-    libsoc_pwm_set_duty_cycle(_pwm.get(), 1000000000 / 58);
+    const auto exportFileName = "/sys/class/pwm/" + std::get<0>(_pinId)
+        + "/export";
+    const auto pinPeriodFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/period";
+    const auto period = 1000000000 / 60;
+    const auto pinDutyFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/duty_cycle";
+    const float dutyCycle = 1000000000 / (0.97 * 60);
+    const auto enableFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/enable";
+
+    std::ofstream exportFile(exportFileName);
+    exportFile << std::get<2>(_pinId) << std::endl;
+    exportFile.close();
+    std::ofstream periodFile(pinPeriodFileName);
+    periodFile << period << std::endl;
+    periodFile.close();
+    std::ofstream dutyFile(pinDutyFileName);
+    dutyFile << static_cast<int>(dutyCycle) << std::endl;
+    dutyFile.close();
+    std::ofstream enableFile(enableFileName);
+    enableFile << "1" << std::endl;
+    enableFile.close();
 }
 
 void Servo::setAngle(const int &angle) const {
     const auto duty = _dutyFromAngle(angle) * 60;
-    libsoc_pwm_set_duty_cycle(_pwm.get(), 1000000000 / static_cast<int>(duty));
+
 }
 
 void Servo::stop() const {
-    libsoc_pwm_free(_pwm.get());
+    
 }
