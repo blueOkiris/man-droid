@@ -16,7 +16,7 @@ Servo::Servo(const PwmPinName &pinName) : _pin(pinFromName(pinName)) {
 }
 
 void Servo::start() const {
-    const auto pythonCmd = "python3 src/pwm.py " + _pin.pythonName;
+    const auto pythonCmd = "python3 src/pwm.py '" + _pin.pythonName + "'";
     system(pythonCmd.c_str());
     std::ofstream periodFile(_pin.periodFileName);
     periodFile << "16666666";
