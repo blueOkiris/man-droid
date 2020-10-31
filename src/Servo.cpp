@@ -7,6 +7,16 @@
 #include <libsoc_debug.h>
 #include <Servo.hpp>
 
+/*
+ * Version control
+ * 
+ * Old libsoc used LS_SHARED
+ * New versions use LS_PWM_SHARED
+ */
+#ifndef LS_PWM_SHARED
+#define LS_PWM_SHARED   LS_SHARED
+#endif
+
 using namespace mandroid;
 
 float Servo::_dutyFromAngle(const int &angle) {
