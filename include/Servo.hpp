@@ -12,7 +12,7 @@ namespace mandroid {
     inline std::pair<int, int> pinNameToChip(const PinName &pin) {
         switch(pin) {
             case PinName::P9_22:
-                return std::make_pair<int, int>(0, 0);
+                return std::make_pair<int, int>(0, 1);
             
             default:
                 return std::make_pair<int, int>(-1, -1);
