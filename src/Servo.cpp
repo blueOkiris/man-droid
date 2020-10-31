@@ -13,8 +13,8 @@
  * Old libsoc used LS_SHARED
  * New versions use LS_PWM_SHARED
  */
-#ifndef LS_PWM_SHARED
-#define LS_PWM_SHARED   LS_SHARED
+#ifndef LS_PWM_WEAK
+#define LS_PWM_WEAK LS_WEAK
 #endif
 
 using namespace mandroid;
