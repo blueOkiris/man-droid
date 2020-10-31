@@ -10,7 +10,7 @@
 namespace mandroid {
     inline void testServo() {
         std::cout << "Testing servo..." << std::endl;
-        const auto servo = Servo(PinName::P9_22);
+        Servo servo;
         std::cout << "Turning on..." << std::endl;
         servo.start();
         std::cout << "Testing angles..." << std::endl;
