@@ -28,9 +28,15 @@ namespace mandroid {
         std::cout << "Done testing servo." << std::endl;
     }
     
+    inline void testSpeechRecognition() {
+        const SpeechRecognizer listener();
+        const auto speech = listener.listen();
+        std::cout << "You said: '" << speech << "'" << std::endl;
+    }
+    
     inline void testSpeechSynthesis() {
         std::cout << "Testing synthesis..." << std::endl;
-        const auto synth = SpeechSynthesizer("audio");
+        const SpeechSynthesizer synth("audio");
         std::cout << "Saying \"Hello, world!\"" << std::endl;
         synth.say("h ɛ . uhl o");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -44,11 +50,5 @@ namespace mandroid {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         synth.say("h u . m ɪ n z");
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    }
-    
-    inline void testSpeechRecognition() {
-        const auto listener = SpeechRecognizer();
-        const auto speech = listener.listen();
-        std::cout << "You said: '" << speech << "'" << std::endl;
     }
 }

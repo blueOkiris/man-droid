@@ -7,8 +7,8 @@ int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
     //testServo();
-    testSpeechRecognition();
-    //testSpeechSynthesis();
+    //testSpeechRecognition();
+    testSpeechSynthesis();
 
     return 0;
 }
