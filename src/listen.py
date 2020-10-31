@@ -17,4 +17,7 @@ def speechToText():
     except speech_recognition.UnknownValueError:
         print('Unable to recognize speech!')
         return ''
+    except:
+        print('Unknown error occurred')
+        return ''
     return response
