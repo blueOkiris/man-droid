@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <PwmPins.hpp>
 #include <Servo.hpp>
 
 using namespace mandroid;
@@ -13,9 +14,6 @@ float Servo::_dutyFromAngle(const int &angle) {
 }
 
 Servo::Servo(const PwmPinName &pinName) : _pin(pinFromName(pinName)) {
-}
-
-void Servo::start() const {
     const auto pythonCmd = "python3 src/pwm.py '" + _pin.pythonName + "'";
     system(pythonCmd.c_str());
     std::ofstream periodFile(_pin.periodFileName);
@@ -24,6 +22,10 @@ void Servo::start() const {
     std::ofstream dutyFile(_pin.dutyFileName);
     dutyFile << "999999";
     dutyFile.close();
+    stop();
+}
+
+void Servo::start() const {
     std::ofstream enableFile(_pin.enableFileName);
     enableFile << "1";
     enableFile.close();

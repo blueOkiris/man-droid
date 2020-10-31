@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <Servo.hpp>
+#include <PwmPins.hpp>
 #include <Speech.hpp>
 
 using namespace mandroid;

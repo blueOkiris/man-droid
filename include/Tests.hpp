@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 #include <string>
+#include <PwmPins.hpp>
 #include <Servo.hpp>
 #include <Speech.hpp>
 #include <Listen.hpp>
