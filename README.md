@@ -18,7 +18,7 @@ An example of a much more complex version of what I'm aiming for can be found [h
 
 Requires microphone and speaker.
 
-Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, and pybind11-dev
+Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, flac, and pybind11-dev
 
 Use pip to install the Python `SpeechRecognition` library.
 
