@@ -13,6 +13,7 @@ namespace mandroid {
         const std::string periodFileName;
         const std::string dutyFileName;
         const std::string enableFileName;
+        const std::string unExportFileName;
     };
 
     inline PwmPin pinFromName(const PwmPinName &pin) {
@@ -22,11 +23,12 @@ namespace mandroid {
                     "/sys/class/pwm/pwmchip1/export", "0",
                     "/sys/class/pwm/pwmchip1/pwm-1:0/period",
                     "/sys/class/pwm/pwmchip1/pwm-1:0/duty_cycle",
-                    "/sys/class/pwm/pwmchip1/pwm-1:0/enable"
+                    "/sys/class/pwm/pwmchip1/pwm-1:0/enable",
+                    "/sys/class/pwm/pwmchip1/unexport"
                 };
 
             default:
-                return { "", "", "", "" };
+                return { "", "", "", "", "" };
         }
     }
 

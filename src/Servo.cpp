@@ -43,4 +43,7 @@ void Servo::stop() const {
     std::ofstream enableFile(_pin.enableFileName);
     enableFile << "0";
     enableFile.close();
+    std::ofstream unExportFile(_pin.unExportFileName);
+    unExportFile << _pin.chipId;
+    unExportFile.close();
 }
