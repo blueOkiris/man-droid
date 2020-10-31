@@ -46,6 +46,18 @@ void Servo::start() const {
 void Servo::setAngle(const int &angle) const {
     const auto duty = _dutyFromAngle(angle) * 60;
 
+    const auto enableFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/enable";
+    const auto pinDutyFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/duty_cycle";
+
+    std::ofstream enableFile(enableFileName);
+    enableFile << "0" << std::endl;
+    std::ofstream dutyFile(pinDutyFileName);
+    dutyFile << static_cast<int>(duty) << std::endl;
+    dutyFile.close();
+    enableFile << "1" << std::endl;
+    enableFile.close();
 }
 
 void Servo::stop() const {
