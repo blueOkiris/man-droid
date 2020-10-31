@@ -1,5 +1,6 @@
 def speechToText():
     import speech_recognition
+    import sys
     
     recognizer = speech_recognition.Recognizer()
     mic = speech_recognition.Microphone()
@@ -18,6 +19,6 @@ def speechToText():
         print('Unable to recognize speech!')
         return ''
     except:
-        print('Unknown error occurred')
+        print('Unknown error occurred: ', sys.exc_info()[0])
         return ''
     return response
