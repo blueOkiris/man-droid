@@ -14,11 +14,11 @@ namespace mandroid {
         std::cout << "Turning on..." << std::endl;
         servo.start();
         std::cout << "Testing angles..." << std::endl;
-        for(int i = 0; i < 31; i++) {
+        for(int i = 0; i < 180; i++) {
             servo.setAngle(i);
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
-        for(int i = 30; i >= 0; i--) {
+        for(int i = 180; i >= 0; i--) {
             servo.setAngle(i);
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
