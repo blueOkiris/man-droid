@@ -1,5 +1,4 @@
 #include <iostream>
-#include <utility>
 #include <string>
 #include <fstream>
 #include <Servo.hpp>
@@ -32,9 +31,17 @@ void Servo::start() const {
 }
 
 void Servo::setAngle(const int &angle) const {
-
+    const auto dutyPercent = _dutyFromAngle(angle);
+    const auto dutyNumber = 16666666 * dutyPercent;
+    const auto dutyStr = std::to_string(static_cast<int>(dutyNumber));
+    std::cout << "New duty: " << dutyStr << std::endl;
+    std::ofstream dutyFile(_pin.dutyFileName);
+    dutyFile << dutyStr;
+    dutyFile.close();
 }
 
 void Servo::stop() const {
-    
+    std::ofstream enableFile(_pin.enableFileName);
+    enableFile << "0";
+    enableFile.close();
 }
