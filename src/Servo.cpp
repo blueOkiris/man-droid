@@ -31,7 +31,7 @@ void Servo::start() const {
 }
 
 void Servo::setAngle(const int &angle) const {
-    const auto dutyPercent = 100 - _dutyFromAngle(angle);
+    const auto dutyPercent = 100 - _dutyFromAngle(angle) + 1;
     const auto dutyNumber = 16666666 * dutyPercent / 100;
     const auto dutyStr = std::to_string(static_cast<int>(dutyNumber));
     std::ofstream dutyFile(_pin.dutyFileName);
