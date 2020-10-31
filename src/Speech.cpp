@@ -24,7 +24,6 @@ static const std::vector<std::string> ipaSymbols_g = {
 
 static const int mouthMaxAngle_g = 90;
 static const int mouthMinAngle_g = 0;
-static const PinName mouthPin_g = PinName::P9_22;
 
 inline std::map<std::string, Mix_Chunk *> generateSpeechTable(
         const std::string &audioFolder) {
@@ -58,7 +57,7 @@ inline std::map<std::string, Mix_Chunk *> generateSpeechTable(
 }
 
 SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
-        _speechTable(generateSpeechTable(audioFolder)), _mouth(mouthPin_g) {
+        _speechTable(generateSpeechTable(audioFolder)) {
     _mouth.start();
     _mouth.setAngle(mouthMinAngle_g);
 }
