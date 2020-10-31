@@ -61,5 +61,14 @@ void Servo::setAngle(const int &angle) const {
 }
 
 void Servo::stop() const {
-    
+    const auto enableFileName = "/sys/class/pwm/" + std::get<0>(_pinId) + "/"
+        + std::get<1>(_pinId) + "/enable";
+    const auto unExportFileName = "/sys/class/pwm/" + std::get<0>(_pinId)
+        + "/unexport";
+    std::ofstream enableFile(enableFileName);
+    enableFile << "0" << std::endl;
+    enableFile.close();
+    std::ofstream unExportFile(unExportFileName);
+    unExportFile << std::get<2>(_pinId) << std::endl;
+    unExportFile.close();
 }
