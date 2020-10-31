@@ -16,9 +16,8 @@ Servo::Servo(const PwmPinName &pinName) : _pin(pinFromName(pinName)) {
 }
 
 void Servo::start() const {
-    std::ofstream exportFile(_pin.exportFileName);
-    exportFile << _pin.chipId;
-    exportFile.close();
+    const auto pythonCmd = "python3 src/pwm.py " + _pin.pythonName;
+    system(pythonCmd.c_str());
     std::ofstream periodFile(_pin.periodFileName);
     periodFile << "16666666";
     periodFile.close();
@@ -43,7 +42,4 @@ void Servo::stop() const {
     std::ofstream enableFile(_pin.enableFileName);
     enableFile << "0";
     enableFile.close();
-    std::ofstream unExportFile(_pin.unExportFileName);
-    unExportFile << _pin.chipId;
-    unExportFile.close();
 }
