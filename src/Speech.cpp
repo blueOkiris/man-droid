@@ -57,7 +57,8 @@ inline std::map<std::string, Mix_Chunk *> generateSpeechTable(
 }
 
 SpeechSynthesizer::SpeechSynthesizer(const std::string &audioFolder) :
-        _speechTable(generateSpeechTable(audioFolder)) {
+        _speechTable(generateSpeechTable(audioFolder)),
+        _mouth(PwmPinName::P9_22) {
     _mouth.start();
     _mouth.setAngle(mouthMinAngle_g);
 }

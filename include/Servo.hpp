@@ -36,7 +36,7 @@ namespace mandroid {
             const PwmPin _pin;
         
         public:
-            Servo();
+            Servo(const PwmPinName &pinName);
 
             void start() const;
             void setAngle(const int &angle) const;

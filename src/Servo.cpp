@@ -13,7 +13,7 @@ float Servo::_dutyFromAngle(const int &angle) {
     return 100 - ((((float) angle) / 180) * dutySpan + dutyMin);
 }
 
-Servo::Servo() : _pin(pinFromName(PwmPinName::P9_22)) {
+Servo::Servo(const PwmPinName &pinName) : _pin(pinFromName(pinName)) {
 }
 
 void Servo::start() const {
