@@ -18,6 +18,8 @@ def speechToText():
     except speech_recognition.UnknownValueError:
         print('Unable to recognize speech!')
         return ''
+    except OSError as e:
+        print(e.args)
     except:
         print('Unknown error occurred: ', sys.exc_info()[0])
         return ''
