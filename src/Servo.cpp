@@ -34,7 +34,7 @@ std::shared_ptr<pwm> Servo::_generatePwm(
         const std::pair<int, int> &pinId) const {
     libsoc_set_debug(1);
     std::shared_ptr<pwm> pwmShared(
-        libsoc_pwm_request(pinId.first, pinId.second, LS_PWM_SHARED)
+        libsoc_pwm_request(pinId.first, pinId.second, LS_PWM_WEAK)
     );
     if(!pwmShared) {
         std::cout << "Couldn't start pwm" << std::endl;
