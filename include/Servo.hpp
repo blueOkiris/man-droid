@@ -19,18 +19,14 @@ namespace mandroid {
         }
     }
     
-    inline float dutyFromAngle(const int &angle) {
-        const auto dutyMin = 3;
-        const auto dutyMax = 14.5;
-        const auto dutySpan = dutyMax - dutyMin;
-        return 100 - ((((float) angle) / 180) * dutySpan + dutyMin);
-    }
-    
     class Servo {
         private:
-            const std::shared_ptr<pwm> _pwm;
+            static float _dutyFromAngle(const int &angle);
 
-            std::shared_ptr<pwm> _generatePwm(const std::pair<int, int> &pinId);
+            const std::shared_ptr<pwm> _pwm;
+            std::shared_ptr<pwm> _generatePwm(
+                const std::pair<int, int> &pinId
+            ) const;
         
         public:
             Servo(const PinName &pin);
