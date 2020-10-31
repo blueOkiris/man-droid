@@ -29,7 +29,7 @@ namespace mandroid {
     }
     
     inline void testSpeechRecognition() {
-        const SpeechRecognizer listener();
+        const SpeechRecognizer listener;
         const auto speech = listener.listen();
         std::cout << "You said: '" << speech << "'" << std::endl;
     }
