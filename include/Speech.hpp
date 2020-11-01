@@ -33,7 +33,7 @@ namespace mandroid {
         public:
             SpeechSynthesizer();
             ~SpeechSynthesizer();
-            
+
             virtual void say(const std::string &ipa) const = 0;
             virtual std::string englishToIpa(
                 const std::string &english
@@ -59,8 +59,8 @@ namespace mandroid {
                 const std::string &dictFile
             );
             ~ClipBasedSpeechSynthesizer();
-            void say(const std::string &ipa) const;
-            std::string englishToIpa(const std::string &english) const;
+            void say(const std::string &ipa) const override;
+            std::string englishToIpa(const std::string &english) const override;
     };
     
     struct SpeechSynthesisIntializationException : public std::exception {

@@ -23,22 +23,18 @@ namespace mandroid {
         protected:
             const std::shared_ptr<SpeechRecognizer> _ears;
             const std::shared_ptr<SpeechSynthesizer> _mouth;
-
-            virtual bool _respond() const;
         
         public:
             Mandroid(
                 const std::shared_ptr<SpeechRecognizer> &ears,
                 const std::shared_ptr<SpeechSynthesizer> &mouth
             );
-            void boot() const;
+            virtual bool respond() const = 0; // used like "while(respond());"
     };
 
     class IfElseBot : public Mandroid {
-        private:
-            bool _respond() const override;
-        
         public:
             IfElseBot();
+            bool respond() const override;
     };
 }

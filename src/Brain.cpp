@@ -13,15 +13,6 @@ Mandroid::Mandroid(
         _ears(ears), _mouth(mouth) {
 }
 
-void Mandroid::boot() const {
-    while(_respond()) {
-    }
-}
-
-bool Mandroid::_respond() const {
-    return false;
-}
-
 inline std::shared_ptr<PythonSpeechRecognizer> createPyRecognizer() {
     PythonSpeechRecognizer recog;
     return std::make_shared<PythonSpeechRecognizer>(recog);
@@ -36,7 +27,7 @@ IfElseBot::IfElseBot() :
         Mandroid(createPyRecognizer(), createClipSynth()) {
 }
 
-bool IfElseBot::_respond() const {
+bool IfElseBot::respond() const {
     const auto userInput = _ears->listen();
     if(userInput == "bye" || userInput == "goodbye") {
         const auto ipa = _mouth->englishToIpa("Bye bye!");
