@@ -20,6 +20,6 @@ Requires microphone and speaker.
 
 Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, flac, and pybind11-dev
 
-Use pip to install the Python `SpeechRecognition` library.
+Use pip to install the Python `PyAudio` and `SpeechRecognition` libraries.
 
 Then run `make` and `sudo make install`

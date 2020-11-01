@@ -64,4 +64,16 @@ namespace mandroid {
                 << std::endl;
         }
     }
+
+    inline void testHearAndRespond() {
+        const SpeechRecognizer ear;
+        const SpeechSynthesizer mouth("audio", "dict.txt");
+
+        std::string input = "";
+        while(input != "quit") {
+            input = ear.listen();
+            const auto sounds = mouth.englishToIpa(input);
+            mouth.say(sounds);
+        }
+    }
 }

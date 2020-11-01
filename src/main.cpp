@@ -9,7 +9,8 @@ int main(int argc, char **args) {
     
     //testServo();
     //testSpeechRecognition();
-    testSpeechSynthesis();
+    //testSpeechSynthesis();
+    testHearAndRespond();
 
     //const Mandroid brain;
 
