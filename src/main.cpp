@@ -6,9 +6,9 @@ using namespace mandroid;
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
-    testServo();
+    //testServo();
     //testSpeechRecognition();
-    //testSpeechSynthesis();
+    testSpeechSynthesis();
 
     return 0;
 }
