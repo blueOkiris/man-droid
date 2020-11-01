@@ -51,6 +51,14 @@ namespace mandroid {
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
             synth.say("h u . m ɪ n z");
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+            std::cout << "Saying (from English) "
+                << "\"Hello, world! Kill all humans!\""
+                << std::endl;
+            const auto testSentence = "Hello, world! Kill all humans!";
+            const auto ipa = synth.englishToIpa(testSentence);
+            synth.say(ipa);
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Exception occurred!" << std::endl << ssie.what()
                 << std::endl;

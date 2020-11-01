@@ -11,10 +11,21 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include <SDL2/SDL_mixer.h>
 #include <Servo.hpp>
 
 namespace mandroid {
+    static const std::vector<std::string> ipaSymbols_g = {
+        "i", "u", "ɪ", "ʊ", "e", "o", "ɚ", "ɛ", "ʌ", "æ", "a",
+        "p", "b", "t", "d", "k", "g",
+        "m", "n", "ɲ", "ŋ",
+        "ɹ", "l",
+        "aj", "aʊ",
+        "f", "v", "θ", "ð", "s", "z", "ʃ", "ʒ", "x", "h",
+        "j", "w", "uhl",
+    };
+    
     class SpeechSynthesizer {
         private:
             // Possibly replace with smart pointers in future
