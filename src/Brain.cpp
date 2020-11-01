@@ -34,10 +34,12 @@ IfElseBot::IfElseBot() :
 bool IfElseBot::_respond() const {
     const auto userInput = _ears->listen();
     if(userInput == "bye" || userInput == "goodbye") {
-        _mouth->say(_mouth->englishToIpa("Bye bye!"));
+        const auto ipa = _mouth->englishToIpa("Bye bye!");
+        _mouth->say(ipa);
         return false;
     } else {
-        _mouth->say(_mouth->englishToIpa("I didn't understand that"));
+        const auto ipa = _mouth->englishToIpa("I didn't understand that");
+        _mouth->say(ipa);
     }
     return true;
 }
