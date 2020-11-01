@@ -1,7 +1,15 @@
 #pragma once
 
+#include <Speech.hpp>
+#include <Listen.hpp>
+
 namespace mandroid {
-    class Brain {
+    class Mandroid {
+        private:
+            const SpeechRecognizer _ears;
+            const SpeechSynthesizer _mouth;
         
+        public:
+            Mandroid();
     };
 }
