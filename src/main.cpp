@@ -12,8 +12,8 @@ int main(int argc, char **args) {
     //testSpeechSynthesis();
     //testHearAndRespond();
 
-    const auto brain = IfElseBot();
-    brain.boot();
+    const auto brain = std::make_shared<Mandroid>(IfElseBot());
+    brain->boot();
 
     return 0;
 }

@@ -18,19 +18,20 @@ namespace mandroid {
      * One could also implement a more robust chat bot
      * by using natural language processing
      */
+
     class Mandroid {
         protected:
             const std::shared_ptr<SpeechRecognizer> _ears;
             const std::shared_ptr<SpeechSynthesizer> _mouth;
 
-            virtual bool _respond() const = 0;
+            virtual bool _respond() const;
         
         public:
             Mandroid(
                 const std::shared_ptr<SpeechRecognizer> &ears,
                 const std::shared_ptr<SpeechSynthesizer> &mouth
             );
-            virtual void boot() const;
+            void boot() const;
     };
 
     class IfElseBot : public Mandroid {

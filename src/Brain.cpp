@@ -6,6 +6,7 @@
 
 using namespace mandroid;
 
+// Defaults:
 Mandroid::Mandroid(
         const std::shared_ptr<SpeechRecognizer> &ears,
         const std::shared_ptr<SpeechSynthesizer> &mouth) :
@@ -15,6 +16,10 @@ Mandroid::Mandroid(
 void Mandroid::boot() const {
     while(_respond()) {
     }
+}
+
+bool Mandroid::_respond() const {
+    return false;
 }
 
 inline std::shared_ptr<PythonSpeechRecognizer> createPyRecognizer() {
