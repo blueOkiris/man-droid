@@ -29,7 +29,7 @@ namespace mandroid {
     }
     
     inline void testSpeechRecognition() {
-        const SpeechRecognizer listener;
+        const PythonSpeechRecognizer listener;
         const auto speech = listener.listen();
         std::cout << "You said: '" << speech << "'" << std::endl;
     }
@@ -37,7 +37,7 @@ namespace mandroid {
     inline void testSpeechSynthesis() {
         try {
             std::cout << "Testing synthesis..." << std::endl;
-            const SpeechSynthesizer synth("audio", "dict.txt");
+            const ClipBasedSpeechSynthesizer synth("audio", "dict.txt");
             std::cout << "Saying \"Hello, world!\"" << std::endl;
             synth.say("h ɛ . uhl o");
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -66,8 +66,8 @@ namespace mandroid {
     }
 
     inline void testHearAndRespond() {
-        const SpeechRecognizer ear;
-        const SpeechSynthesizer mouth("audio", "dict.txt");
+        const PythonSpeechRecognizer ear;
+        const ClipBasedSpeechSynthesizer mouth("audio", "dict.txt");
 
         std::string input = "";
         while(input != "quit") {

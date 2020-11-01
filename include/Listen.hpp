@@ -5,7 +5,12 @@
 namespace mandroid {
     class SpeechRecognizer {
         public:
-            SpeechRecognizer();
-            std::string listen() const;
+            virtual std::string listen() const = 0;
+    };
+
+    class PythonSpeechRecognizer : public SpeechRecognizer {
+        public:
+            PythonSpeechRecognizer();
+            std::string listen() const override;
     };
 }

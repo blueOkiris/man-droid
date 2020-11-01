@@ -14,7 +14,8 @@
 
 using namespace mandroid;
 
-std::map<std::string, Mix_Chunk *> SpeechSynthesizer::_generateSpeechTable(
+std::map<std::string, Mix_Chunk *>
+    ClipBasedSpeechSynthesizer::_generateSpeechTable(
         const std::string &audioFolder) {
     std::map<std::string, Mix_Chunk *> speechTable;
     
@@ -46,7 +47,7 @@ std::map<std::string, Mix_Chunk *> SpeechSynthesizer::_generateSpeechTable(
 }
 
 std::map<std::string, std::string>
-    SpeechSynthesizer::_generatePronunciationTable(
+    ClipBasedSpeechSynthesizer::_generatePronunciationTable(
         const std::string &dictFileName) {
     // Read in and split the entries (line-separated)
     std::ifstream dictFile(dictFileName);
@@ -76,7 +77,7 @@ std::map<std::string, std::string>
     return pronunciationTable;
 }
 
-std::string SpeechSynthesizer::_guessSound(const std::string &word) {
+std::string ClipBasedSpeechSynthesizer::_guessSound(const std::string &word) {
     std::stringstream ipa;
 
     /*

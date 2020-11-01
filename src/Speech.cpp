@@ -16,16 +16,23 @@ using namespace mandroid;
 static const int mouthMaxAngle_g = 90;
 static const int mouthMinAngle_g = 0;
 
-SpeechSynthesizer::SpeechSynthesizer(
-            const std::string &audioFolder, const std::string &dictFile) :
-        _speechTable(_generateSpeechTable(audioFolder)),
-        _wordToPronunciation(_generatePronunciationTable(dictFile)),
-        _mouth(PwmPinName::P9_22) {
+SpeechSynthesizer::SpeechSynthesizer() : _mouth(PwmPinName::P9_22) {
     _mouth.start();
     _mouth.setAngle(mouthMinAngle_g);
 }
 
 SpeechSynthesizer::~SpeechSynthesizer() {
+    _mouth.stop();
+}
+
+ClipBasedSpeechSynthesizer::ClipBasedSpeechSynthesizer(
+            const std::string &audioFolder, const std::string &dictFile) :
+        SpeechSynthesizer(),
+        _speechTable(_generateSpeechTable(audioFolder)),
+        _wordToPronunciation(_generatePronunciationTable(dictFile)) {
+}
+
+ClipBasedSpeechSynthesizer::~ClipBasedSpeechSynthesizer() {
     for(auto &symbolFilePair : _speechTable) {
         Mix_FreeChunk(symbolFilePair.second);
     }
@@ -34,7 +41,7 @@ SpeechSynthesizer::~SpeechSynthesizer() {
     _mouth.stop();
 }
 
-void SpeechSynthesizer::say(const std::string &ipa) const {
+void ClipBasedSpeechSynthesizer::say(const std::string &ipa) const {
     const auto sounds = split(ipa, " ");
     for(const auto &sound : sounds) {
         if(sound == ".") {
@@ -49,7 +56,8 @@ void SpeechSynthesizer::say(const std::string &ipa) const {
     }
 }
 
-std::string SpeechSynthesizer::englishToIpa(const std::string &english) const {
+std::string ClipBasedSpeechSynthesizer::englishToIpa(
+        const std::string &english) const {
     std::stringstream ipa;
 
     // Remove punctuation and split by spaces
