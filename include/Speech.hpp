@@ -19,12 +19,24 @@ namespace mandroid {
         private:
             // Possibly replace with smart pointers in future
             const std::map<std::string, Mix_Chunk *> _speechTable;
+            const std::map<std::string, std::string> _wordToPronunciation;
             const Servo _mouth;
+
+            static std::map<std::string, Mix_Chunk *> _generateSpeechTable(
+                const std::string &audioFolder
+            );
+            static std::map<std::string, std::string> 
+                _generatePronunciationTable(const std::string &dictFileName);
+            static std::string _guessSound(const std::string &word);
             
         public:
-            SpeechSynthesizer(const std::string &audioFolder);
+            SpeechSynthesizer(
+                const std::string &audioFolder,
+                const std::string &dictFile
+            );
             ~SpeechSynthesizer();
             void say(const std::string &ipa) const;
+            std::string englishToIpa(const std::string &english) const;
     };
     
     struct SpeechSynthesisIntializationException : public std::exception {

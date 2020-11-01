@@ -4,5 +4,5 @@
 
 using namespace mandroid;
 
-Mandroid::Mandroid() : _ears(), _mouth("audio") {
+Mandroid::Mandroid() : _ears(), _mouth("audio", "dict.txt") {
 }

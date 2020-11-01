@@ -37,7 +37,7 @@ namespace mandroid {
     inline void testSpeechSynthesis() {
         try {
             std::cout << "Testing synthesis..." << std::endl;
-            const SpeechSynthesizer synth("audio");
+            const SpeechSynthesizer synth("audio", "dict.txt");
             std::cout << "Saying \"Hello, world!\"" << std::endl;
             synth.say("h ɛ . uhl o");
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
