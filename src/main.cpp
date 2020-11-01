@@ -10,9 +10,10 @@ int main(int argc, char **args) {
     //testServo();
     //testSpeechRecognition();
     //testSpeechSynthesis();
-    testHearAndRespond();
+    //testHearAndRespond();
 
-    //const Mandroid brain;
+    const auto brain = IfElseBot();
+    brain.boot();
 
     return 0;
 }

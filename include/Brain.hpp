@@ -5,11 +5,19 @@
 
 namespace mandroid {
     class Mandroid {
-        private:
+        protected:
             const SpeechRecognizer _ears;
             const SpeechSynthesizer _mouth;
+
+            virtual bool _respond() const = 0;
         
         public:
             Mandroid();
+            virtual void boot() const;
+    };
+
+    class IfElseBot : public Mandroid {
+        private:
+            bool _respond() const override;
     };
 }
