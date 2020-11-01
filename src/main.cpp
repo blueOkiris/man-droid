@@ -4,7 +4,9 @@
 
 using namespace mandroid;
 
-const auto bot_g = std::make_shared<IfElseBot>(IfElseBot());
+inline void runBot(const std::shared_ptr<Mandroid> &brain) {
+    while(brain->respond());
+}
 
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
@@ -14,8 +16,6 @@ int main(int argc, char **args) {
     //testSpeechSynthesis();
     //testHearAndRespond();
 
-    const auto brain = bot_g;
-    while(brain->respond());
-
+    runBot(std::make_shared<IfElseBot>(IfElseBot()));
     return 0;
 }
