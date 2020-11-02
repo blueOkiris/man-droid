@@ -26,11 +26,15 @@ IfElseBot::IfElseBot() :
 }
 
 bool IfElseBot::respond() const {
-    const auto userInput = _ears->listen();
+    const auto userInput = toLower(_ears->listen());
     if(userInput == "bye" || userInput == "goodbye") {
         const auto ipa = _mouth->englishToIpa("Bye bye!");
         _mouth->say(ipa);
         return false;
+    } else if(userInput == "hi" || userInput == "hey" ||
+            startsWith(userInput, "hello")) {
+        const auto hiSounds = _mouth->englishToIpa("hello"):
+        _mouth->say(hiSounds);
     } else if(startsWith(userInput, "tell me about")) {
         const auto okaySounds = _mouth->englishToIpa("Okay");
         _mouth->say(okaySounds);
