@@ -16,7 +16,7 @@ namespace mandroid {
         servo.start();
         std::cout << "Testing angles..." << std::endl;
         for(int i = 0; i < 10; i++) {
-            servo.setAngle(7);
+            servo.setAngle(10);
             std::this_thread::sleep_for(std::chrono::milliseconds(200));
             servo.setAngle(0);
             std::this_thread::sleep_for(std::chrono::milliseconds(200));
