@@ -16,8 +16,6 @@ An example of a much more complex version of what I'm aiming for can be found [h
 
 ## Installation
 
-Requires microphone and speaker.
-
 ```
 sudo apt install -y libsdl2-dev libsdl2-mixer-dev python3-pyaudio pybind11-dev flac
 pip3 install PyAudio
