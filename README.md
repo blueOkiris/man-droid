@@ -18,8 +18,10 @@ An example of a much more complex version of what I'm aiming for can be found [h
 
 Requires microphone and speaker.
 
-Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, flac, python-duckduckgo2, and pybind11-dev
+Clone this repo: `https://github.com/blueOkiris/python-duckduckgo`, then run the command `sudo python3 setup.py install`.
 
-Use pip to install the Python `PyAudio` and `SpeechRecognition` libraries.
+Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, flac, lib, and pybind11-dev
+
+Use pip3 to install the Python `PyAudio` and `SpeechRecognition` libraries.
 
 Then run `make` and `sudo make install`
