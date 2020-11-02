@@ -1,6 +1,6 @@
 # Mandroid
 
-![project image](images/temp-image.png)
+![project image](images/built-bot.jpg)
 
 ## Description
 
