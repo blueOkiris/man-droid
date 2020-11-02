@@ -11,11 +11,11 @@ inline void runBot(const std::shared_ptr<Mandroid> &brain) {
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
-    //testServo();
+    testServo();
     //testSpeechRecognition();
     //testSpeechSynthesis();
     //testHearAndRespond();
 
-    runBot(std::make_shared<IfElseBot>(IfElseBot()));
+    //runBot(std::make_shared<IfElseBot>(IfElseBot()));
     return 0;
 }
