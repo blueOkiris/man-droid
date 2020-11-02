@@ -60,6 +60,11 @@ static inline bool endsWith(
     }
 }
 
+static inline bool startsWith(
+        const std::string &mainStr, const std::string &toMatch) {
+    return mainStr.rfind(toMatch, 0) == 0;
+}
+
 static inline std::vector<std::string> split(
         const std::string &str, const std::string &splitStr) {
     std::vector<std::string> subStrs;
