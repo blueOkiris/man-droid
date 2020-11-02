@@ -18,10 +18,46 @@ An example of a much more complex version of what I'm aiming for can be found [h
 
 Requires microphone and speaker.
 
-Clone this repo: `https://github.com/blueOkiris/python-duckduckgo`, then run the command `sudo python3 setup.py install`.
+```
+sudo apt install -y libsdl2-dev libsdl2-mixer-dev python3-pyaudio pybind11-dev flac
+pip3 install PyAudio
+pip3 install SpeechRecognition
+git clone https://github.com/blueOkiris/python-duckduckgo
+cd python-duckduckgo
+sudo python3 setup.py install
+cd ..
+git clone https://github.com/blueOkiris/man-droid
+cd man-droid
+make
+sudo make install
+```
 
-Install libpython3.7, libsdl2-dev, libsdl2-mixer-dev, python3-audio, flac, lib, and pybind11-dev
+Here's the explanation:
 
-Use pip3 to install the Python `PyAudio` and `SpeechRecognition` libraries.
+- Install Dependencies:
 
-Then run `make` and `sudo make install`
+  * SDL2_mixer is required for speech synthesis: `libsdl2-dev libsdl2-mixer-dev`
+
+  * The Python pip libraries `PyAudio` and `SpeechRecognition` is required for speech recognition. It relies on: `python3-pyaudio`
+
+  * The python speech recognition library is called in C++ using pybind: `pybind11-dev`
+
+  * Flac for audio input
+
+  * python-duckduckgo
+
+    * Download custom duckduckgo library (for search)
+
+    * Go into the directory
+
+    * Install it
+
+    * Leave the directory
+
+ - Download main project from git
+
+ - Go into the project folder
+
+ - Build it with make
+
+ -Install system service for running at start
