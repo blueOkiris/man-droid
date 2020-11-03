@@ -58,4 +58,4 @@ Here's the explanation:
 
  - Build it with make
 
- -Install system service for running at start
+ - Install system service for running at start
