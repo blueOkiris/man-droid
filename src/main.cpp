@@ -11,12 +11,12 @@ inline void runBot(const std::shared_ptr<Mandroid> &brain) {
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
-    //testServo();
+    testServo();
     //testSpeechRecognition();
     //testSpeechSynthesis();
     //testHearAndRespond();
 
-    auto success = false;
+    /*auto success = false;
     while(!success) {
         try {
             runBot(std::make_shared<IfElseBot>(IfElseBot()));
@@ -24,7 +24,7 @@ int main(int argc, char **args) {
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Failed to initialize speech synthesis" << std::endl;
         }
-    }
+    }*/
 
     return 0;
 }
