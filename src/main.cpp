@@ -24,7 +24,7 @@ int main(int argc, char **args) {
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Failed to initialize speech synthesis" << std::endl;
         }
-    }
+    }*/
 
-    return 0;*/
+    return 0;
 }
