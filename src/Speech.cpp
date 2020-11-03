@@ -13,7 +13,7 @@
 
 using namespace mandroid;
 
-static const int mouthMaxAngle_g = 90;
+static const int mouthMaxAngle_g = 10;
 static const int mouthMinAngle_g = 0;
 
 SpeechSynthesizer::SpeechSynthesizer() : _mouth(PwmPinName::P9_22) {
