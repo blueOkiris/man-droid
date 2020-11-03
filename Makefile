@@ -51,4 +51,5 @@ install : $(OBJNAME)
 uninstall :
 	rm -rf /opt/mandroid
 	rm -rf /usr/bin/mandroid
+	rm -rf /var/mandroid.log
 	systemctl disable mandroid.service
