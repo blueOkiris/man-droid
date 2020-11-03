@@ -85,12 +85,11 @@ std::string ClipBasedSpeechSynthesizer::englishToIpa(
 }
 
 SpeechSynthesisIntializationException::SpeechSynthesisIntializationException(
-        const std::string &message) : _message(message) {   
+        const std::string &message) : _message(
+            "Failed to initialize speech synthesisizer. Error: " + message
+        ) {   
 }
 
 const char *SpeechSynthesisIntializationException::what() const throw() {
-    std::stringstream error;
-    error << "Failed to initialize speech synthesisizer. SDL error: "
-        << _message;
-    return error.str().c_str();
+    return _message.c_str();
 }
