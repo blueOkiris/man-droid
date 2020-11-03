@@ -46,3 +46,8 @@ install : $(OBJNAME)
 	cp src/mandroid.service /etc/systemd/system/mandroid.service
 	chmod 644 /etc/systemd/system/mandroid.service
 	systemctl enable mandroid.service
+
+.PHONY : uninstall
+	rm -rf /opt/mandroid
+	rm -rf /usr/bin/mandroid
+	systemctl disable mandroid.service
