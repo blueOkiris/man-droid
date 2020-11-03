@@ -1,0 +1,9 @@
+Package: mandroid
+Version: 1.0
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 1024
+Maintainer: github.com/blueOkiris
+Description: Control application/service for the mandroid robot for beaglebone
