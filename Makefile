@@ -41,6 +41,7 @@ $(OBJNAME).deb : $(OBJNAME)
 	mkdir -p pkg/mandroid/DEBIAN
 	cp src/install/control pkg/mandroid/DEBIAN
 	cp src/install/postinst pkg/mandroid/DEBIAN
+	chmod 055 pkg/mandroid/DEBIAN
 	mkdir -p pkg/mandroid/opt/mandroid
 	mkdir -p pkg/mandroid/opt/mandroid/src
 	mkdir -p pkg/mandroid/etc/systemd/system
