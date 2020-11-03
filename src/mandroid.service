@@ -4,6 +4,7 @@ Description=The Mandroid Program
 [Service]
 Type=simple
 WorkingDirectory=/opt/mandroid
+StandardOutput=file:/var/mandroid.log
 ExecStart=/usr/bin/mandroid
 
 [Install]
