@@ -1,9 +1,17 @@
 #!/bin/bash
 
+echo "Setting up necessary python3 packages..."
+echo "Installing PyAudio with pip..."
 pip3 install PyAudio
+echo "Done."
+echo "Installing SpeechRecognition with pip..."
 pip3 install SpeechRecognition
+echo "Done."
+echo "Installing custom duckduckgo2..."
 git clone https://github.com/blueOkiris/python-duckduckgo
 cd python-duckduckgo
 sudo python3 setup.py install
 cd ..
 rm -rf python-duckduckgo
+echo "Done."
+echo "Done setting up python."
