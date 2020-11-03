@@ -59,3 +59,12 @@ Here's the explanation:
  - Build it with make
 
  - Install system service for running at start
+
+Alternatively, you can build the debian package and install it yourself:
+
+```
+make mandroid.deb
+sudo dpkg -i pkg/mandroid.deb
+sudo ln -s /opt/mandroid/mandroid /usr/bin/mandroid
+sudo systemctl enable mandroid
+```

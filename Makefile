@@ -39,7 +39,8 @@ $(OBJNAME).deb : $(OBJNAME)
 	mkdir -p pkg
 	mkdir -p pkg/mandroid
 	mkdir -p pkg/mandroid/DEBIAN
-	cp src/control pkg/mandroid/DEBIAN
+	cp src/install/control pkg/mandroid/DEBIAN
+	cp src/install/postinst pkg/mandroid/DEBIAN
 	mkdir -p pkg/mandroid/opt/mandroid
 	mkdir -p pkg/mandroid/opt/mandroid/src
 	mkdir -p pkg/mandroid/etc/systemd/system
@@ -48,7 +49,7 @@ $(OBJNAME).deb : $(OBJNAME)
 	cp src/pwm.py pkg/mandroid/opt/mandroid/src
 	cp src/listen.py pkg/mandroid/opt/mandroid/src
 	cp dict.txt pkg/mandroid/opt/mandroid
-	cp src/mandroid.service pkg/mandroid/etc/systemd/system
+	cp src/install/mandroid.service pkg/mandroid/etc/systemd/system
 	chmod 644 pkg/mandroid/etc/systemd/system/mandroid.service
 	cd pkg; dpkg-deb --build mandroid
 
@@ -62,7 +63,7 @@ install : $(OBJNAME)
 	cp src/listen.py /opt/mandroid/src
 	cp dict.txt /opt/mandroid
 	ln -s /opt/mandroid/$(OBJNAME) /usr/bin/$(OBJNAME)
-	cp src/mandroid.service /etc/systemd/system
+	cp src/install/mandroid.service /etc/systemd/system
 	chmod 644 /etc/systemd/system/mandroid.service
 	systemctl enable mandroid.service
 

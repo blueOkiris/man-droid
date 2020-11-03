@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pip3 install PyAudio
+pip3 install SpeechRecognition
+git clone https://github.com/blueOkiris/python-duckduckgo
+cd python-duckduckgo
+sudo python3 setup.py install
+cd ..
+rm -rf python-duckduckgo

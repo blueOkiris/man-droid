@@ -7,3 +7,4 @@ Essential: no
 Installed-Size: 1024
 Maintainer: github.com/blueOkiris
 Description: Control application/service for the mandroid robot for beaglebone
+Depends: libsdl2-dev libsdl2-mixer-dev python3-pyaudio pybind11-dev flac
