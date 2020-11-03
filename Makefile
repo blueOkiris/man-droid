@@ -48,6 +48,7 @@ install : $(OBJNAME)
 	systemctl enable mandroid.service
 
 .PHONY : uninstall
+uninstall :
 	rm -rf /opt/mandroid
 	rm -rf /usr/bin/mandroid
 	systemctl disable mandroid.service
