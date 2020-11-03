@@ -35,7 +35,7 @@ obj/%.o : src/%.cpp
 $(OBJNAME) : $(OBJS)
 	$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
-pkg/mandroid.deb : $(OBJNAME)
+pkg/mandroid.deb : $(OBJNAME) $(wildcard src/install/*)
 	rm -rf pkg
 	mkdir -p pkg
 	mkdir -p pkg/mandroid
