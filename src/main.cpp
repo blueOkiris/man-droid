@@ -13,8 +13,8 @@ int main(int argc, char **args) {
     
     //testServo();
     //testSpeechRecognition();
-    //testSpeechSynthesis();
-    testHearAndRespond();
+    testSpeechSynthesis();
+    //testHearAndRespond();
 
     //runBot(std::make_shared<IfElseBot>(IfElseBot()));
 

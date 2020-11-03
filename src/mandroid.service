@@ -3,6 +3,7 @@ Description=The Mandroid Program
 
 [Service]
 Type=simple
+WorkingDirectory=/opt/mandroid
 ExecStart=/usr/bin/mandroid
 
 [Install]

@@ -33,7 +33,7 @@ bool IfElseBot::respond() const {
         return false;
     } else if(userInput == "hi" || userInput == "hey" ||
             startsWith(userInput, "hello")) {
-        const auto hiSounds = _mouth->englishToIpa("hello"):
+        const auto hiSounds = _mouth->englishToIpa("hello");
         _mouth->say(hiSounds);
     } else if(startsWith(userInput, "tell me about")) {
         const auto okaySounds = _mouth->englishToIpa("Okay");

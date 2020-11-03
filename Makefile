@@ -36,8 +36,11 @@ $(OBJNAME) : $(OBJS)
 .PHONY : install
 install : $(OBJNAME)
 	mkdir -p /opt/mandroid
+	mkdir -p /opt/mandroid/src
 	cp $(OBJNAME) /opt/mandroid/
 	cp -rf /opt/mandroid/audio	/opt/mandroid
+	cp src/pwm.py /opt/mandroid/src
+	cp src/listen.py /opt/mandroid/src
 	cp dict.txt /opt/mandroid
 	ln -s /opt/mandroid/$(OBJNAME) /usr/bin/$(OBJNAME)
 	cp src/mandroid.service /etc/systemd/system/mandroid.service
