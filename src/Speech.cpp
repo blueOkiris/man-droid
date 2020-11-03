@@ -40,18 +40,24 @@ ClipBasedSpeechSynthesizer::~ClipBasedSpeechSynthesizer() {
 }
 
 void ClipBasedSpeechSynthesizer::say(const std::string &ipa) const {
+    _mouth.setAngle(_mouthMinAngle);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     const auto sounds = split(ipa, " ");
     for(const auto &sound : sounds) {
         if(sound == ".") {
             _mouth.setAngle(_mouthMinAngle);
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         } else if(sound == "#") {
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            _mouth.setAngle(_mouthMinAngle);
+            std::this_thread::sleep_for(std::chrono::milliseconds(400));
         } else {
             _mouth.setAngle(_mouthMaxAngle);
             Mix_PlayChannel(0, _speechTable.at(sound), 0);
             while(Mix_Playing(0));
         }
     }
+    _mouth.setAngle(_mouthMinAngle);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
 std::string ClipBasedSpeechSynthesizer::englishToIpa(

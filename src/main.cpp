@@ -11,9 +11,9 @@ inline void runBot(const std::shared_ptr<Mandroid> &brain) {
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
-    testServo();
+    //testServo();
     //testSpeechRecognition();
-    //testSpeechSynthesis();
+    testSpeechSynthesis();
     //testHearAndRespond();
 
     /*auto success = false;
