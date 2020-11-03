@@ -16,7 +16,11 @@ int main(int argc, char **args) {
     //testSpeechSynthesis();
     testHearAndRespond();
 
-    //runBot(std::make_shared<IfElseBot>(IfElseBot()));
+    try {
+        runBot(std::make_shared<IfElseBot>(IfElseBot()));
+    } catch(const SpeechSynthesisIntializationException &ssie) {
+        std::cout << "Failed to initialize speech synthesis" << std::endl;
+    }
 
     return 0;
 }
