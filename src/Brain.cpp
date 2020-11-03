@@ -23,6 +23,8 @@ IfElseBot::IfElseBot() :
                 ClipBasedSpeechSynthesizer("audio", "dict.txt")
             )
         ) {
+    const auto ipa = _mouth->englishToIpa("Hello");
+    _mouth->say(ipa);
 }
 
 bool IfElseBot::respond() const {
