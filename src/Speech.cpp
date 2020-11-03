@@ -13,7 +13,8 @@
 
 using namespace mandroid;
 
-SpeechSynthesizer::SpeechSynthesizer() : _mouth(PwmPinName::P9_22) {
+SpeechSynthesizer::SpeechSynthesizer() : _mouth(PwmPinName::P9_22),
+        _mouthMinAngle(0), _mouthMaxAngle(10) {
     _mouth.start();
     _mouth.setAngle(_mouthMinAngle);
 }

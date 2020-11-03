@@ -28,9 +28,9 @@ namespace mandroid {
 
     class SpeechSynthesizer {
         protected:
-            static const int _mouthMaxAngle = 10;
-            static const int _mouthMinAngle = 0;
             const Servo _mouth;
+            const int _mouthMinAngle;
+            const int _mouthMaxAngle;
 
         public:
             SpeechSynthesizer();
