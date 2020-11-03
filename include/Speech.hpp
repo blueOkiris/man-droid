@@ -28,6 +28,8 @@ namespace mandroid {
 
     class SpeechSynthesizer {
         protected:
+            static const int _mouthMaxAngle = 10;
+            static const int _mouthMinAngle = 0;
             const Servo _mouth;
 
         public:
@@ -42,16 +44,16 @@ namespace mandroid {
     
     class ClipBasedSpeechSynthesizer : public SpeechSynthesizer {
         private:
-            // Possibly replace with smart pointers in future
-            const std::map<std::string, Mix_Chunk *> _speechTable;
-            const std::map<std::string, std::string> _wordToPronunciation;
-
             static std::map<std::string, Mix_Chunk *> _generateSpeechTable(
                 const std::string &audioFolder
             );
             static std::map<std::string, std::string> 
                 _generatePronunciationTable(const std::string &dictFileName);
             static std::string _guessSound(const std::string &word);
+
+            // Possibly replace with smart pointers in future
+            const std::map<std::string, Mix_Chunk *> _speechTable;
+            const std::map<std::string, std::string> _wordToPronunciation;
             
         public:
             ClipBasedSpeechSynthesizer(

@@ -13,12 +13,9 @@
 
 using namespace mandroid;
 
-static const int mouthMaxAngle_g = 10;
-static const int mouthMinAngle_g = 0;
-
 SpeechSynthesizer::SpeechSynthesizer() : _mouth(PwmPinName::P9_22) {
     _mouth.start();
-    _mouth.setAngle(mouthMinAngle_g);
+    _mouth.setAngle(_mouthMinAngle);
 }
 
 SpeechSynthesizer::~SpeechSynthesizer() {
@@ -45,11 +42,11 @@ void ClipBasedSpeechSynthesizer::say(const std::string &ipa) const {
     const auto sounds = split(ipa, " ");
     for(const auto &sound : sounds) {
         if(sound == ".") {
-            _mouth.setAngle(mouthMinAngle_g);
+            _mouth.setAngle(_mouthMinAngle);
         } else if(sound == "#") {
             std::this_thread::sleep_for(std::chrono::milliseconds(250));
         } else {
-            _mouth.setAngle(mouthMaxAngle_g);
+            _mouth.setAngle(_mouthMaxAngle);
             Mix_PlayChannel(0, _speechTable.at(sound), 0);
             while(Mix_Playing(0));
         }
