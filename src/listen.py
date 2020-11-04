@@ -4,7 +4,6 @@ def speechToText():
     
     recognizer = speech_recognition.Recognizer()
     mic = None
-    m = None
     for i, micName in enumerate(speech_recognition.Microphone.list_microphone_names()):
         if micName.startswith('Logitech USB Microphone'):
             mic = speech_recognition.Microphone(device_index = i)
