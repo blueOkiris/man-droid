@@ -12,8 +12,8 @@ int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
     //testServo();
-    //testSpeechRecognition();
-    testSpeechSynthesis();
+    testSpeechRecognition();
+    //testSpeechSynthesis();
     //testHearAndRespond();
 
     /*auto success = false;

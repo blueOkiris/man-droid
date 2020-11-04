@@ -3,7 +3,11 @@ def speechToText():
     import sys
     
     recognizer = speech_recognition.Recognizer()
-    mic = speech_recognition.Microphone()
+    mic = None
+    m = None
+    for i, micName in enumerate(speech_recognition.Microphone.list_microphone_names()):
+        if micName.startswith('Logitech USB Microphone'):
+            mic = speech_recognition.Microphone(device_index = i)
     
     with mic as source:
         recognizer.adjust_for_ambient_noise(source)
