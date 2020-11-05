@@ -46,13 +46,13 @@ void ClipBasedSpeechSynthesizer::say(const std::string &ipa) const {
     for(const auto &sound : sounds) {
         if(sound == ".") {
             _mouth.setAngle(_mouthMinAngle);
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            std::this_thread::sleep_for(std::chrono::milliseconds(75));
         } else if(sound == "#") {
             _mouth.setAngle(_mouthMinAngle);
             std::this_thread::sleep_for(std::chrono::milliseconds(400));
         } else {
             _mouth.setAngle(_mouthMaxAngle);
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            std::this_thread::sleep_for(std::chrono::milliseconds(75));
             Mix_PlayChannel(0, _speechTable.at(sound), 0);
             while(Mix_Playing(0));
         }
