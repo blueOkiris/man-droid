@@ -79,7 +79,7 @@ std::string ClipBasedSpeechSynthesizer::englishToIpa(
     for(const auto &word : words) {
         const auto pronounceMapIt = _wordToPronunciation.find(word);
         if(pronounceMapIt == _wordToPronunciation.end()) {
-            ipa << _guessSound(word) << " # ";
+            ipa << _guessSound(word) << "# ";
         } else {
             ipa << pronounceMapIt->second << " # ";
         }
