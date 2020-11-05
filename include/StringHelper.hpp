@@ -18,6 +18,16 @@ static inline std::string toLower(const std::string &str) {
     return newStr.str();
 }
 
+static inline std::string justAlpha(const std::string &str) {
+    std::stringstream newStr;
+    for(const char &c : str) {
+        if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == ' ') {
+            newStr << c; 
+        }
+    }
+    return newStr.str();
+}
+
 static inline std::string remove(
         const std::string &str, const char &toRemove) {
     std::stringstream newStr;
