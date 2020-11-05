@@ -69,7 +69,9 @@ namespace mandroid {
         std::string input = "";
         while(input != "quit") {
             input = ear.listen();
+            std::cout << "You said: '" << input << std::endl;
             const auto sounds = mouth.englishToIpa(input);
+            std::cout << "Saying '" << sounds << "'" << std::endl;
             mouth.say(sounds);
         }
     }
