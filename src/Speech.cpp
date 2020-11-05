@@ -52,6 +52,7 @@ void ClipBasedSpeechSynthesizer::say(const std::string &ipa) const {
             std::this_thread::sleep_for(std::chrono::milliseconds(400));
         } else {
             _mouth.setAngle(_mouthMaxAngle);
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             Mix_PlayChannel(0, _speechTable.at(sound), 0);
             while(Mix_Playing(0));
         }
