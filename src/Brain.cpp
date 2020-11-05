@@ -1,5 +1,6 @@
 #include <string>
 #include <memory>
+#include <iostream>
 #include <pybind11/embed.h>
 #include <StringHelper.hpp>
 #include <Speech.hpp>
@@ -25,6 +26,7 @@ IfElseBot::IfElseBot() :
         ) {
     const auto ipa = _mouth->englishToIpa("Hello");
     _mouth->say(ipa);
+    std::cout << "Initialized!" << std::endl;
 }
 
 bool IfElseBot::respond() const {
