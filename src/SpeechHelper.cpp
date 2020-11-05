@@ -186,7 +186,7 @@ std::string ClipBasedSpeechSynthesizer::_guessSound(const std::string &word) {
                 ipa << "i ";
                 break;
             case 'j':
-                ipa << "ʒ";
+                ipa << "ʒ ";
                 break;
             case 'k':
                 ipa << "k ";
