@@ -4,10 +4,6 @@
 
 using namespace mandroid;
 
-inline void runBot(const std::shared_ptr<Mandroid> &brain) {
-    while(brain->respond());
-}
-
 int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
@@ -19,8 +15,10 @@ int main(int argc, char **args) {
     auto success = false;
     while(!success) {
         try {
-            runBot(std::make_shared<IfElseBot>(IfElseBot()));
-            success = true;
+            const auto brain = IfElseBot();
+            if(brain.respond()) {
+                success = true;
+            }
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Failed to initialize speech synthesis" << std::endl;
         }
