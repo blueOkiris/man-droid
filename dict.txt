@@ -1,7 +1,11 @@
 pie p aj
+pie p aj z
 hello h ɛ . uhl o
 world w ɚ . uhl d
+worlds w ɚ . uhl d z
 kill k ɪ uhl
+kill k ɪ uhl z
+killing k ɪ uhl . i ŋ
 all a uhl
 humans h u . m ɪ n z
 human h u . m ɪ n
@@ -9,5 +13,306 @@ bye b aj
 i aj
 didnt d ɪ d . n t
 understand ʌ n . d ɹ . s t æ n d
+understands ʌ n . d ɹ . s t æ n d z
+understanding ʌ n . d ɹ . s t æ n d . i ŋ
 that ð æ t
 okay o . k e
+as æ z
+his h ɪ z
+he h i
+was w ʌ z
+for f o ɚ
+on a n
+are a ɚ
+with w ɪ θ
+they ð e
+be b i
+being b i i ŋ
+at æ t
+one w ʌ n
+have h æ v
+having h æ v . i ŋ
+this ð ɪ s
+from f ɹ ʌ m
+by b aj
+hot h a t
+word w ɚ d
+but b ʌ t
+what w ʌ t
+some s ʌ m
+is ɪ z
+it ɪ t
+you j u
+or o ɚ
+had h æ d
+the ð i
+of ʌ v
+to t u
+and æ n d
+a ʌ
+in ɪ n
+we w i
+can k ɪ n
+out aʊ t
+other ʌ . ð ɚ
+were w ɚ
+which w ɪ t ʃ
+do d u
+their ð e . ɚ
+time t aj m
+times t aj m z
+timing t aj m . i ŋ
+if ɪ f
+will w ɪ . uhl
+how h aʊ
+said s ɛ d
+says s ɛ z
+saying s e . i ŋ
+an æ n
+each i t ʃ
+tell t ɛ . uhl
+tell t ɛ . uhl z
+telling t ɛ . l i ŋ
+does d ʌ z
+doing d u . i ŋ
+set s ɛ t
+sets s ɛ t s
+setting s ɛ t . i ŋ
+three θ ɹ i
+want w a n t
+wants w a n t s
+wanting w a n t . i ŋ
+air e . ɚ
+well w ɛ l
+also a uhl . s o
+play p l e
+plays p l e z
+playing p l e . i ŋ
+small s m a . uhl
+end ɪ n d
+ends ɪ n d z
+ending ɪ n d . i ŋ
+put p ʊ t
+put p ʊ t s
+put p ʊ t . i ŋ
+home h o m
+homes h o m z
+read r i d
+hand h æ n d
+port p o ɹ t
+large l a . ɚ ʒ
+spell s p ɛ . uhl
+spells s p ɛ . uhl z
+spelling s p ɛ . l i ŋ
+add æ d
+adds æ d s
+adding æ d . i ŋ
+even i . v ɪ n
+land l æ n d
+lands l æ n d
+landing l æ n d . i ŋ
+here h i ɚ
+must m ʌ s t
+big b ɪ g
+high h aj
+such s ʌ t ʃ
+follow f a uhl . o
+follows f a uhl . o z
+following f a uhl . o . i ŋ
+act æ k t
+acts æ k t s
+acting æ k . t i ŋ
+why w aj
+ask æ s k
+asks æ s k s
+asking æ s k . i ŋ
+men m ɪ n
+change t ʃ e ɲ ʒ
+changes t ʃ e ɲ ʒ . ɪ z
+changing t ʃ e ɲ ʒ . i ŋ
+went w ɪ n t
+light l aj t
+lights l aj t s
+lighting l aj t . i ŋ
+kind k aj n d
+off a f
+need n i d
+need n i d z
+needing n i d . i ŋ
+house h aʊ s
+picture p ɪ k . t ʃ ɚ
+pictures p ɪ k . t ʃ ɚ s
+picturing p ɪ k . t ʃ ɚ . i ŋ
+try t ʃ ɹ aj
+tries t ʃ ɹ aj z
+trying t ʃ ɹ aj . i ŋ
+us ʌ s
+again ʌ . g ɪ n
+animal æ n . ɪ . m uhl
+animals æ n . ɪ . m uhl z
+point p o i n t
+points p o i n t s
+pointing p o i n t . i ŋ
+mother m ʌ . ð ɚ
+mothers m ʌ . ð ɚ z
+program p ɹ o . g ɚ . æ m
+programs p ɹ o . g ɚ . æ m z
+programming p ɹ o . g ɚ . æ . m i ŋ
+near n i ɚ
+build b ɪ . uhl d
+builds b ɪ . uhl d z
+building b ɪ . uhl d . i ŋ
+self s ɛ . uhl f
+earth ɚ θ
+father f a . θ ɚ
+fathers f a . θ ɚ z
+any æ . n i
+new n u
+news n u z
+work w ɚ k
+works w ɚ k s
+working w ɚ k . i ŋ
+part p a ɚ t
+parts p a ɚ t s
+take t e k
+takes t e k s
+taking t e k . i ŋ
+get g ɪ t
+gets g ɪ t s
+getting g ɪ t . i ŋ
+place p l e s
+places p l e s
+place p l e s . i ŋ
+made m e d
+live l ɪ v
+lives l ɪ v s
+where w ɛ ɚ
+after æ f . t ɚ
+back b æ k
+little l ɪ t . uhl
+only o n . l i
+round r aʊ n d
+man m æ n
+year y i ɚ
+years y i ɚ s
+came k e m
+show ʃ o
+shows ʃ o z
+every ɛ v . ɹ i
+good g ʊ d
+me m i
+give g ɪ v
+gives g ɪ v z
+our aʊ ɚ
+under ʌ n . d ɚ
+name n e m
+very v e ɚ . ɹ i
+through θ ɹ u
+just d ʒ ʌ s t
+form f o ɚ m
+sentence s ɪ n . t ɪ n s
+sentences s ɪ n . t ɪ n s . ɛ z
+great g ɹ e t
+think θ i n k
+thinks θ i n k s
+say s e
+help h ɛ . uhl p
+helps h ɛ . uhl p s
+low l o
+line l aj n
+differ d ɪ f . ɚ
+turn t ɚ n
+cause k a z
+much m ʌ t ʃ
+mean m i n
+before b i . f o ɚ
+move m u v
+right r aj t
+boy b o i
+old o uhl d
+too t u
+same s e m
+she ʃ i
+there ð ɛ ɚ
+when w ɪ n
+up ʌ p
+use j u z
+your j ɚ
+way w e
+about ʌ . b aʊ t
+many m æ n . i
+then ð ɪ n
+write ɹ aj t
+them ð ɪ m
+would w ʊ d
+like l aj k
+so s o
+these ð i z
+her h ɚ
+long l a ŋ
+make m e k
+thing θ i ŋ
+see s i
+him h ɪ m
+two t u
+has h æ z
+look l ʊ k
+more m o ɚ
+day d e
+could k ʊ d
+go g o
+come k ʌ m
+did d ɪ d
+number n ʌ m . b ɚ
+sound s aʊ n d
+no n o
+most m o s t
+people p i . p uhl
+my m aj
+over o . v ɚ
+know n o
+water w a . t ɚ
+than ð æ n
+call k a uhl
+first f ɚ s t
+who h u
+may m e
+down d aʊ n
+side s aj d
+been b ɪ n
+now n aʊ
+find f aj n d
+head h ɛ d
+stand s t æ n d
+own o n
+page p e ʒ
+should ʃ ʊ d
+country k ʌ n . t ɹ i
+found f aʊ n d
+answer æ n . s ɚ
+school s k u uhl
+grow g ɹ o
+study s t ʌ . d i
+studies s t ʌ . d i z
+still s t ɪ uhl
+learn l ɚ n
+learns l ɚ n z
+interpreted ɪ n . t ɚ p . ɹ ɛ t . ɛ d
+highlevel h aj # l ɛ . v uhl
+generalpurpose d ʒ ɪ n . ɚ . uhl # p ɚ . p ɪ s
+language l e ŋ . w ɛ ʒ
+created k ɹ i . e . t ɛ d
+released ɹ i . l i s d
+design d i . z aj n
+philosophy f ɪ l . a s . o . f i
+emphasize ɪ m f . ʌ . s aj z
+emphasizes ɪ m f . ʌ . s aj . z ɛ z
+code k o d
+readability r i d . ʌ . b ɪ l . ɪ . t i
+its ɪ t s
+notable n o t . ʌ . b uhl
+significant s ɪ g . n ɪ f . ɪ . k æ n t
+whitespace w aj t . s p e s
+plant p l æ n t
+cover k ʌ . v ɚ
+covers k ʌ . v ɚ s

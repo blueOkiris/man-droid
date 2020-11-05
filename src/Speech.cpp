@@ -69,8 +69,11 @@ std::string ClipBasedSpeechSynthesizer::englishToIpa(
         remove(
             remove(
                 remove(
-                    remove(remove(remove(remove(english, '!'), '.'), '?'), ','),
-                    '/'
+                    remove(
+                        remove(
+                            remove(remove(remove(english, '!'), '-'), '.'), '?'
+                        ), ','
+                    ), '/'
                 ), '\''
             ), '"'
         )
