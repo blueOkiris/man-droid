@@ -12,9 +12,9 @@ int main(int argc, char **args) {
     std::cout << "Initializing the Mandroid!" << std::endl;
     
     //testServo();
-    testSpeechRecognition();
+    //testSpeechRecognition();
     //testSpeechSynthesis();
-    //testHearAndRespond();
+    testHearAndRespond();
 
     /*auto success = false;
     while(!success) {
