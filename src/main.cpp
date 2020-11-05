@@ -11,9 +11,9 @@ int main(int argc, char **args) {
     //testServo();
     //testSpeechRecognition();
     //testSpeechSynthesis();
-    //testHearAndRespond();
+    testHearAndRespond();
 
-    auto success = false;
+    /*auto success = false;
     while(!success) {
         try {
             const auto ears = PythonSpeechRecognizer();
@@ -31,7 +31,7 @@ int main(int argc, char **args) {
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Failed to initialize speech synthesis" << std::endl;
         }
-    }
+    }*/
 
     return 0;
 }
