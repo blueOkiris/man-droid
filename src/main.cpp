@@ -17,7 +17,7 @@ int main(int argc, char **args) {
     while(!success) {
         try {
             const auto ears = PythonSpeechRecognizer();
-            const auto mouth = ClipBasedSpeechSynthesizer();
+            const auto mouth = ClipBasedSpeechSynthesizer('audio', 'dict.txt');
             const auto earsPtr = std::make_shared<PythonSpeechRecognizer>(ears);
             const auto mouthPtr = std::make_shared<ClipBasedSpeechSynthesizer>(
                 mouth
