@@ -66,19 +66,7 @@ std::string ClipBasedSpeechSynthesizer::englishToIpa(
     std::stringstream ipa;
 
     // Remove punctuation and split by spaces
-    const auto cleanStr = toLower(
-        remove(
-            remove(
-                remove(
-                    remove(
-                        remove(
-                            remove(remove(remove(english, '!'), '-'), '.'), '?'
-                        ), ','
-                    ), '/'
-                ), '\''
-            ), '"'
-        )
-    );
+    const auto cleanStr = toLower(justAlpha(english));
     const auto words = split(cleanStr, " ");
     for(const auto &word : words) {
         const auto pronounceMapIt = _wordToPronunciation.find(word);

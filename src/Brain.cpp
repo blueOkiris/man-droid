@@ -45,9 +45,9 @@ bool IfElseBot::respond() const {
         auto result = pybind11::cast<std::string>(
             searchModule.attr("get_zci")(thingToSearch)
         );
-        std::cout << result << std::endl;
-
         const auto resultSounds = _mouth->englishToIpa(result);
+
+        std::cout << result << std::endl << "Saying " << resultSounds << std::endl;
         _mouth->say(resultSounds);
     } else {
         const auto ipa = _mouth->englishToIpa("I didn't understand that");
