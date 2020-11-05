@@ -34,7 +34,10 @@ namespace mandroid {
 
     class IfElseBot : public Mandroid {
         public:
-            IfElseBot();
+            IfElseBot(
+                const std::shared_ptr<SpeechRecognizer> &ears,
+                const std::shared_ptr<SpeechSynthesizer> &mouth
+            );
             bool respond() const override;
     };
 }

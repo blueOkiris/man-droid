@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <Tests.hpp>
 #include <Brain.hpp>
 
@@ -15,10 +16,18 @@ int main(int argc, char **args) {
     auto success = false;
     while(!success) {
         try {
-            const auto brain = IfElseBot();
-            if(brain.respond()) {
-                success = true;
+            const auto ears = PythonSpeechRecognizer();
+            const auto mouth = ClipBasedSpeechSynthesizer();
+            const auto earsPtr = std::make_shared<PythonSpeechRecognizer>(ears);
+            const auto mouthPtr = std::make_shared<ClipBasedSpeechSynthesizer>(
+                mouth
+            );
+            const auto brain = IfElseBot(earsPtr, mouthPtr);
+            
+            while(brain.respond()) {
             }
+            
+            success = true;
         } catch(const SpeechSynthesisIntializationException &ssie) {
             std::cout << "Failed to initialize speech synthesis" << std::endl;
         }

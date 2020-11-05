@@ -16,14 +16,10 @@ Mandroid::Mandroid(
         _ears(ears), _mouth(mouth) {
 }
 
-IfElseBot::IfElseBot() :
-        Mandroid(
-            std::make_shared<PythonSpeechRecognizer>(
-                PythonSpeechRecognizer()
-            ), std::make_shared<ClipBasedSpeechSynthesizer>(
-                ClipBasedSpeechSynthesizer("audio", "dict.txt")
-            )
-        ) {
+IfElseBot::IfElseBot(
+        const std::shared_ptr<SpeechRecognizer> &ears,
+        const std::shared_ptr<SpeechSynthesizer> &mouth) :
+        Mandroid(ears, mouth) {
     const auto ipa = _mouth->englishToIpa("Hello");
     _mouth->say(ipa);
     std::cout << "Initialized!" << std::endl;
